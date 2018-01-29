@@ -10,8 +10,7 @@
 
 ## Setup/Installation Requirements
 
-* Copy repository from GitHub to your computer using Terminal command $ git clone and then open index.html in a browser, or
-* Open [link](https://QIANQIANHU.github.io/number-game) in your browser.
+* Copy repository from GitHub to your computer using Terminal command $ git clone and then open index.html in a browser.
 
 
 ## Technologies Used
