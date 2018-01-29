@@ -6,7 +6,7 @@
 
 ## Description
 
- This website help customers to form their taste profile, which can be the reference for users choose right dishes from foreign restaurants. This webpage will get the users' taste preference by their clicking 4 groups pictures, after they submit the form, the page will form a funny description, spider-chart of their taste profile, and options of dishes matching their taste. The users could click the dishes they want, the most close taste dishes will display in a cart list and calculate the total for users. It also help the customers to explore a new restaurant, the order will match the customer's taste specifically. The chef can also adjust the dishes based on the taste profiles.
+ This website help customers to create their taste profile, which can be the reference for users choose right dishes from foreign restaurants. This webpage will get the users' taste preference by their clicking 4 groups pictures, after they submit the form, the page will form a funny description, spider-chart of their taste profile, and options of dishes matching their taste. The users could click the dishes they want, the most close taste dishes will display in a cart list and calculate the total for users. It also help the customers to explore a new restaurant, the order will match the customer's taste specifically. The chef can also adjust the dishes based on the taste profiles.
 
 ## Setup/Installation Requirements
 
