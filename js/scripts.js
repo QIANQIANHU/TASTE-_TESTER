@@ -2,8 +2,10 @@ var allStarters = [];
 var allDrinks = [];
 var allMainCourses = [];
 var allDeserts = [];
+
 var allUsers = [];
 var globalUser = null;
+
 function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, deserts, flavorProfile, foodGroupProfile){
   this.name = nameIn;
   this.password = password;
@@ -26,6 +28,13 @@ function Dish(nameIn, countryFrom, group, flavProfile, foodGProfile, cost, img){
   this.cost = cost;
   this.img = img;
 }
+function toggle(){
+  $("#resultsOne").toggle();
+  $("#resultsTwo").toggle();
+  $("#resultsThree").toggle();
+  $("#resultsFour").toggle();
+  $("#inputSection").toggle();
+}
 
 function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
   this.sweet = thisSweet;
@@ -34,7 +43,6 @@ function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
   this.sour = thisSour;
   this.umani = thisUmani;
 }
-
 function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains, thisOil){
   this.fruit = thisFruit;
   this.vegetable = thisVeg;
@@ -86,17 +94,35 @@ function login(userName, password){
     }
   }
 }
+function generateDishes(){
+  for(var i = 0; i < allStarters.length; i ++){
+    $("#resultsOne").append("<img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
+  //  toggle();
+  }
+  for(var i = 0; i < allDrinks.length; i ++){
+    $("#resultsTwo").append("<img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
+  // s  toggle();
+  }
+  for(var i = 0; i < allMainCourses.length; i ++){
+    $("#resultsThree").append("<img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
+    toggle();
+  }
+  for(var i = 0; i < allDeserts.length; i ++){
+    $("#resultsFour").append("<img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
+    toggle();
+  }
+}
 function generatePakistaniFood(){
   //PAKISTANI
-  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, image);
-  allMainCourses.push(one5);
-  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, image);
+  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, image);
+  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
+  allMainCourses.push(one);
+  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
   allDrinks.push(one);
-  var one = new Dish ("Ras Malai", "Pakistan", "Desert", [2, 0, 0, 0, 0], [0, 0, 5, 0, 0]);
+  var one = new Dish ("RasmaLai", "Pakistan", "Desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
   allDeserts.push(one);
-  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, image);
+  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
   allStarters.push(one);
 }
 User.prototype.generateFlavorProfile = function(){

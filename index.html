@@ -13,7 +13,7 @@
       <div class="jumbotron">
         <h1>Taste Testing</h1>
       </div>
-      <div class="row">
+      <div class="row" id ="inputSection">
         <div class="col-md-12">
           <form id = "login">
             <h4><strong>Log In</strong><h4><hr></hr>
@@ -30,36 +30,42 @@
             <input id="name" class="form-control" type="text">
             <label for="password"><h6><strong>Password: </strong></h6></label>
             <input id="password" class="form-control" type="text">
-            <label for="countryFrom"><h6><strong> You're From: </strong></h6></label>
-            <input id="countryFrom" class="form-control" type="text">
-            <label for="countryTo"><h6><strong>Country You're Travelling To: </strong></h6></label>
-            <input id="countryTo" class="form-control" type="text">
+            <h6><strong>Select the Country You're From:</strong></h6>
+            <select class="form-control" id="countryFrom">
+              <option value="US">United States</option>
+              <option value="CHINA">China</option>
+              <option value="PAKISTAN">Pakistan</option>
+              <option value="KYRGYZSTAN">Kyrgyzstan</option>
+              <option value="ITALY">Italy</option>
+            </select>
+            <h6><strong>Select the Country You're Visiting:</strong></h6>
+            <select class="form-control" id="countryTo">
+              <option value="US">United States</option>
+              <option value="CHINA">China</option>
+              <option value="PAKISTAN">Pakistan</option>
+              <option value="KYRGYZSTAN">Kyrgyzstan</option>
+              <option value="ITALY">Italy</option>
+            </select>
             <h6><strong>Allergies/Dietary Preferences</strong></h6>
-            <input type="checkbox" name="allergy" value="Lactose">Lactose<br>
+            <input type="checkbox" name="allergy" value="Lactose">Lactose Intolerant<br>
             <input type="checkbox" name="allergy" value="Vegeterian">Vegeterian<br>
             <input type="checkbox" name="allergy" value="Vegan">Vegan<br>
             <button type="submit" id="createUserButton">Create Account</button>
           </form>
-          <form id = "generateDish">
-            <h4><strong>Log In</strong><h4><hr></hr>
-            <label for="dishName"><h6><strong>Name: </strong></h6></label>
-            <input id="dishName" class="form-control" type="text">
-            <label for="countryFrom"><h6><strong>Country From: </strong></h6></label>
-            <input id="countryFrom" class="form-control" type="text">
-            <label for="type"><h6><strong>Course Type: </strong></h6></label>
-            <input id="type" class="form-control" type="text">
-            <label for="flavProfile"><h6><strong>Flavor Profile[sweet, salty, bitter, sour, umani]</strong></h6></label>
-            <input id="flavProfile" class="form-control" type="text">
-            <label for="foodGroupProfile"><h6><strong>Food Group Profile[thisFruit, thisVeg, thisProtein, thisDairy, thisGrains, thisOil]</strong></h6></label>
-            <input id="foodGroupProfile" class="form-control" type="text">
-            <label for="cost"><h6><strong>cost</strong></h6></label>
-            <input id="cost" class="form-control" type="text">
-            <label for="img"><h6><strong>img</strong></h6></label>
-            <input id="img" class="form-control" type="text">
-            <button type="submit">Add Dish</button>
-            <br>
-          </form>
         </div>
+      </div>
+      
+      <div class = "row" id="resultsOne">
+        <h3><strong>Select Starters:</strong></h3><hr></hr>
+      </div>
+      <div class = "row" id="resultsTwo">
+        <h3><strong>Select Drinks:</strong></h3><hr></hr>
+      </div>
+      <div class = "row" id="resultsThree">
+        <h3><strong>Select Maincourses:</strong></h3><hr></hr>
+      </div>
+      <div class = "row" id="resultsFour">
+        <h3><strong>Select Deserts:</strong></h3><hr></hr>
       </div>
     </div>
   </body>

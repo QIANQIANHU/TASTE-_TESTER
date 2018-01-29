@@ -1,0 +1,10 @@
+#resultsOne, #resultsTwo, #resultsThree, #resultsFour {
+  display: none;
+  margin-bottom: 2em;
+}
+
+img {
+  height: 10em;
+  width: 10em;
+  margin-left: 1em;
+}
