@@ -26,4 +26,4 @@ Contact email: huqianqian@ymail.com
 
 ### License
 
-Copyright (c) 2018 **qh,ad**
+Copyright (c) 2018 **qh, ad, fh, bt, an, ar**
