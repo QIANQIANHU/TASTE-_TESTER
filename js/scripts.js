@@ -82,28 +82,68 @@ function login(userName, password){
   }
 }
 function displayDishesFrom(){
-    for(var i = 0; i < allStarters.length; i ++){
-      $("#resultsOne").text("");
-      $("#resultsOne").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
+  $("#resultsOne").text("");
+  $("#resultsOne").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
+  $("#resultsTwo").text("");
+  $("#resultsTwo").append("<h3><strong>Select Drinks:</strong></h3><hr></hr>");
+  $("#resultsThree").text("");
+  $("#resultsThree").append("<h3><strong>Select Maincourses:</strong></h3><hr></hr>");
+  $("#resultsFour").text("");
+  $("#resultsFour").append("<h3><strong>Select Deserts:</strong></h3><hr></hr>");
+
+  for(var i = 0; i < allStarters.length; i ++){
+    if(allStarters[i].countryFrom == globalUser.from){
       $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
     }
-    for(var i = 0; i < allDrinks.length; i ++){
-      $("#resultsTwo").text("");
-      $("#resultsTwo").append("<h3><strong>Select Drinks:</strong></h3><hr></hr>");
-      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+  }
+  for(var i = 0; i < allDrinks.length; i ++){
+    if(allDrinks[i].countryFrom == globalUser.from){
+    $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
-    for(var i = 0; i < allMainCourses.length; i ++){
-      $("#resultsThree").text("");
-      $("#resultsThree").append("<h3><strong>Select Maincourse:</strong></h3><hr></hr>");
-      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
+  }
+  for(var i = 0; i < allMainCourses.length; i ++){
+    if(allMainCourses[i].countryFrom == globalUser.from){
+    $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
     }
-    for(var i = 0; i < allDeserts.length; i ++){
-      $("#resultsFour").text("");
-      $("#resultsFour").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
-      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
+  }
+  for(var i = 0; i < allDeserts.length; i ++){
+    if(allDeserts[i].countryFrom == globalUser.from){
+    $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
     }
+  }
 }
 //Used for assigning selected dishes to globalUsers properties.
+//Used to display all dish objects.
+function displayDishesTo(){
+  $("#resultsFive").text("");
+  $("#resultsFive").append("<h3><strong>Recommended Starters:</strong></h3><hr></hr>");
+  $("#resultsSix").text("");
+  $("#resultsSix").append("<h3><strong>Recommended Drinks:</strong></h3><hr></hr>");
+  $("#resultsSeven").text("");
+  $("#resultsSeven").append("<h3><strong>Recommended Maincourses:</strong></h3><hr></hr>");
+  $("#resultsEight").text("");
+  $("#resultsEight").append("<h3><strong>Recommended Deserts:</strong></h3><hr></hr>");
+  for(var i = 0; i < globalUser.starters.length; i ++){
+    if(globalUser.starters[i].flavProfile.margin(globalUser.getStarterFlavorProfile()){
+      $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
+  }
+  for(var i = 0; i < globalUser.drinks.length; i ++){
+    if(globalUser.drinks[i].flavProfile.margin(globalUser.getDrinkFlavorProfile()){
+      $("#resultsSix").append("<div class = 'col-md-3'><h3>" + globalUser.drinks[i].name + "</h3><img src="+ "'" + globalUser.drinks[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
+  }
+  for(var i = 0; i < globalUser.maincourses.length; i ++){
+    if(globalUser.maincourses[i].flavProfile.margin(globalUser.getMainCourseFlavorProfile()){
+      $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
+  }
+  for(var i = 0; i < globalUser.deserts.length; i ++){
+    if(globalUser.deserts[i].flavProfile.margin(globalUser.getDesertFlavorProfile()){
+      $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.deserts[i].name + "</h3><img src="+ "'" + globalUser.deserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
+  }
+}
 function sortSelectedDishesForUser(arrayOfDishObjects){
   for(var i = 0; i < arrayOfDishObjects.length; i ++){
     var currentDish = arrayOfDishObjects[i];
@@ -131,32 +171,6 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
         }
       }
     }
-  }
-}
-//Used to display all dish objects.
-function determineDishesToSuggest(){
-
-}
-function displayDishesTo(){
-  for(var i = 0; i < globalUser.starters.length; i ++){
-    $("#resultsFive").text("");
-    $("#resultsFive").append("<h3><strong>Recommended Starters:</strong></h3><hr></hr>");
-    $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.starters[i].name + "'" + "+>" + globalUser.starters[i].name  + "</div>");
-  }
-  for(var i = 0; i < globalUser.drinks.length; i ++){
-    $("#resultsSix").text("");
-    $("#resultsSix").append("<h3><strong>Recommended Drinks:</strong></h3><hr></hr>");
-    $("#resultsSix").append("<div class = 'col-md-3'><h3>" + globalUser.drinks[i].name + "</h3><img src="+ "'" + globalUser.drinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.drinks[i].name + "'" + "+>" + globalUser.drinks[i].name  + "</div>");
-  }
-  for(var i = 0; i < globalUser.maincourses.length; i ++){
-    $("#resultsSeven").text("");
-    $("#resultsSeven").append("<h3><strong>Recommended MainCourses:</strong></h3><hr></hr>");
-    $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.maincourses[i].name + "'" + "+>" + globalUser.maincourses[i].name  + "</div>");
-  }
-  for(var i = 0; i < globalUser.deserts.length; i ++){
-    $("#resultsEight").text("");
-    $("#resultsEight").append("<h3><strong>Recommended Deserts:</strong></h3><hr></hr>");
-    $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.deserts[i].name + "</h3><img src="+ "'" + globalUser.deserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.deserts[i].name + "'" + "+>" + globalUser.deserts[i].name  + "</div>");
   }
 }
 
@@ -204,7 +218,6 @@ User.prototype.getDesertFlavorProfile = function(){
   desertsFlavorArray = desertsFlavorArray.divideArray(desertLength);
   return desertsFlavorArray;
 }
-
 User.prototype.checkForDishName = function(currentDishNameIn){
   for(var i = 0; i < this.starters.length; i ++){
     if(this.starters[i].name == currentDishNameIn){
@@ -228,6 +241,16 @@ User.prototype.checkForDishName = function(currentDishNameIn){
   }
   return false;
 }
+Flavor.prototype.margin = function(inputArray){
+  var doThisOperation = this.subArrays(inputArray);
+  var arrLength = doThisOperation.length;
+  for(var i = 0; i < arrLength; i ++){
+    if(!(Math.abs(doThisOperation[i]) < .3)){
+      return false;
+    }
+  }
+  return true;
+}
 Array.prototype.addArrays = function(arrayIn) {
   var outputArray = [];
   for(var i = 0; i < arrayIn.length; i ++){
@@ -242,18 +265,25 @@ Array.prototype.divideArray = function(constant){
   }
   return outputArray;
 }
+Array.prototype.subArrays = function(arrayIn) {
+  var outputArray = [];
+  for(var i = 0; i < arrayIn.length; i ++){
+    outputArray[i] = arrayIn[i] - this[i];
+  }
+  return outputArray;
+}
 //Generates all Dish Objects
 function generateAllDishes(){
   //PAKISTANI
   var one = new Dish("Chicken Biryani", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Chicken Karahi", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
+  one = new Dish ("Chicken Karahi", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Lassi", "Pakistan", "drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
+  one = new Dish ("Lassi", "Pakistan", "drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
   allDrinks.push(one);
-  var one = new Dish ("RasmaLai", "Pakistan", "desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
+  one = new Dish ("RasmaLai", "Pakistan", "desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
   allDeserts.push(one);
-  var one = new Dish ("Cholay", "Pakistan", "starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
+  one = new Dish ("Cholay", "Pakistan", "starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
   allStarters.push(one);
   // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
 
