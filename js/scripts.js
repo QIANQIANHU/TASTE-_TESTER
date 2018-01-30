@@ -58,17 +58,8 @@ function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains
 function generateUser(nameIn, password, countryFrom, countryTo, allergies){
   var newUser = new User(nameIn, password, countryFrom,countryTo,null,null,null,null,null,null);
   var thisFoodGroupProfile = [];
-  //Conditional for Allergies
-  for(var i = 0; i < allergies.length; i++){
-    if(allergies[i] == "Lactose"){
-      thisFoodGroupProfile = [true,true,true,FALSE, true, true];
-    } else if(allergies[i] == "Vegeterian"){
-      thisFoodGroupProfile = [true,true,FALSE,FALSE, true, true];
-    } else if(allergies[i] == "Vegan"){
-      thisFoodGroupProfile = [TRUE,TRUE,false,false, TRUE, FALSE];
-    }
-  }
   var arrLength = allUsers.length;
+
   for(var i = 0; i < arrLength; i ++){
     if(allUsers[i].name == newUser.name){
       alert("Sorry this name is already Taken.");
@@ -99,40 +90,46 @@ function login(userName, password){
     }
   }
 }
+//Used for assigning selected dishes to globalUsers properties.
+function sortSelectedDishesForUser(arrayOfDishObjects){
+  for(var i = 0; i < arrayOfDishObjects.length; i ++){
+    var currentDish = arrayOfDishObjects[i];
+    for(var j = 0; j < allStarters.length; j ++){
+      if(allStarters[j].name == currentDish){
+        globalUser.starters.push(allStarters[j]);
+      }
+    }
+    for(var j = 0; j < allDrinks.length; j ++){
+      if(allDrinks[j].name == currentDish){
+        globalUser.drinks.push(allDrinks[j]);
+      }
+    }
+    for(var j = 0; j < allMainCourses.length; j ++){
+      if(allMainCourses[j].name == currentDish){
+        globalUser.maincourses.push(allMainCourses[j]);
+      }
+    }
+    for(var j = 0; j < allDeserts.length; j ++){
+      if(allDeserts[j].name == currentDish){
+        globalUser.deserts.push(allDeserts[j]);
+      }
+    }
+  }
+}
 //Used to display all dish objects.
-function generateDishes(){
+function displayDishesFrom(){
     for(var i = 0; i < allStarters.length; i ++){
       $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
-    //  toggle();
     }
     for(var i = 0; i < allDrinks.length; i ++){
       $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
-    // s  toggle();
     }
     for(var i = 0; i < allMainCourses.length; i ++){
       $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
-      toggle();
     }
     for(var i = 0; i < allDeserts.length; i ++){
       $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
-      toggle();
     }
-}
-//Generates all Dish Objects
-function generateFood(){
-  //PAKISTANI
-  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
-  allMainCourses.push(one);
-  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
-  allMainCourses.push(one);
-  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
-  allDrinks.push(one);
-  var one = new Dish ("RasmaLai", "Pakistan", "Desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
-  allDeserts.push(one);
-  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
-  allStarters.push(one);
-  // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
-
 }
 User.prototype.generateFlavorProfile = function(){
   var startersLength = this.starters.length;
@@ -195,18 +192,24 @@ Array.prototype.divideArray = function(constant){
   }
   return outputArray;
 }
-// generateUser -> display food from their from country(allergies, vegetarian) -> select -> generates flavor/food group profile from their starteres/Drinks/Maincourses/deserts
-// -> Filter any country. ->Display result for to country.
+//Generates all Dish Objects
+function generateAllDishes(){
+  //PAKISTANI
+  var one = new Dish("Chicken Biryani", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
+  allMainCourses.push(one);
+  var one = new Dish ("Chicken Karahi", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
+  allMainCourses.push(one);
+  var one = new Dish ("Lassi", "Pakistan", "drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
+  allDrinks.push(one);
+  var one = new Dish ("RasmaLai", "Pakistan", "desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
+  allDeserts.push(one);
+  var one = new Dish ("Cholay", "Pakistan", "starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
+  allStarters.push(one);
+  // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
+
+}
 $(document).ready(function(){
-  $("form#generateDish").submit(function(event) {
-    console.log("login");
-    event.preventDefault();
-    var nameIn = $("#nameLogin").val();
-    var loginIn = $("#passwordLogin").val();
-    if(login(nameIn, loginIn)){
-      //switch to userpage
-    }
-  });
+  generateAllDishes(); //Initializing all Dish objects in our makeshift database.
   $("form#createUser").submit(function(event) {
     event.preventDefault();
     console.log("createUser");
@@ -219,7 +222,8 @@ $(document).ready(function(){
     allergies.push($(this).val());
     });
     if(generateUser(nameIn, passwordIn, countryFrom, countryTo, allergies)){
-      //switch to newUserSection
+      displayDishesFrom();
+      toggle();
     }
   });
   $("form#login").submit(function(event) {
@@ -228,14 +232,18 @@ $(document).ready(function(){
     var nameIn = $("#nameLogin").val();
     var loginIn = $("#passwordLogin").val();
     if(login(nameIn, loginIn)){
-      //switch to userpage
+      displayDishesFrom();
+      toggle();
     }
   });
   $("form#resultFirst").submit(function(event) {
+    event.preventDefault();
     var selectedDishes = [];
     $("input:checkbox[name=selected]:checked").each(function(){
       selectedDishes.push($(this).val());
     });
+    console.log(selectedDishes);
+    sortSelectedDishesForUser(selectedDishes);
 
   })
 });
