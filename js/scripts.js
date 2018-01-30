@@ -121,39 +121,74 @@ function generateDishes(){
 //Generates all Dish Objects
 function generateFood(){
   //PAKISTANI
-  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 1, 1], [.0, .1, .3, .1, .4, .1], 19.99, "images/pakistani-cuisine/maincourse-chicken-biryani.jpg");
+  var one = new Dish("Chicken Biryani", "PAKISTAN", "Main Course", [0, 1, 0, 0, 1, 1], [.0, .1, .3, .1, .4, .1], 19.99, "images/pakistani-cuisine/maincourse-chicken-biryani.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .3, .4, .0, .0, .3], 11.99, "images/pakistani-cuisine/maincourse-chicken-karahi.jpg");
+  var one = new Dish ("Chicken Karahi", "PAKISTAN", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .3, .4, .0, .0, .3], 11.99, "images/pakistani-cuisine/maincourse-chicken-karahi.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .2, .4, .2, .0, .2], 14.99, "images/pakistani-cuisine/maincourse-chickenqorma.jpg");
+  var one = new Dish ("Chicken Qorma", "PAKISTAN", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .2, .4, .2, .0, .2], 14.99, "images/pakistani-cuisine/maincourse-chickenqorma.jpg");
   allMainCourses.push(one);
-  var one = new Dish("Okra subzi", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .5, .3, .0, .0, .2], 9.99, "images/pakistani-cuisine/maincourse-okrasubzi.jpg");
+  var one = new Dish("Okra subzi", "PAKISTAN", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .5, .3, .0, .0, .2], 9.99, "images/pakistani-cuisine/maincourse-okrasubzi.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0, 0], [.0, .0, .5, .5, .0, .0], 2.99, "images/pakistani-cuisine/drink-lassi.jpg");
+  var one = new Dish ("Lassi", "PAKISTAN", "Drink", [1, 1, 0, 0, 0, 0], [.0, .0, .5, .5, .0, .0], 2.99, "images/pakistani-cuisine/drink-lassi.jpg");
   allDrinks.push(one);
-  var one = new Dish ("Kashmiri chai", "Pakistan", "Drink", [1, 1, 0, 0, 0, 1], [.0, .0, .4, .5, .1, .0], 4.99, "images/pakistani-cuisine/drink-kashmirichai.jpg");
+  var one = new Dish ("Kashmiri chai", "PAKISTAN", "Drink", [1, 1, 0, 0, 0, 1], [.0, .0, .4, .5, .1, .0], 4.99, "images/pakistani-cuisine/drink-kashmirichai.jpg");
   allDrinks.push(one);
-  var one = new Dish ("Sugar cane juice", "Paksitan", "Drink", [5, 0, 0, 0, 0, 1], [.0, .0, .0, .5, .5], 1.99, "images/pakistani-cuisine/drink-sugarcanejuice.jpg");
+  var one = new Dish ("Sugar cane juice", "PAKISTAN", "Drink", [5, 0, 0, 0, 0, 1], [.0, .0, .0, .5, .5], 1.99, "images/pakistani-cuisine/drink-sugarcanejuice.jpg");
   allDrinks.push(one);
-  var one = new Dish ("Shardai", "Pakistan", "Drink", [3, 1, 0, 0, 0, 0], [.2, .0, .3, .2, .3, .0], 4.99, "images/pakistani-cuisine/drink-shardai.jpg");
+  var one = new Dish ("Shardai", "PAKISTAN", "Drink", [3, 1, 0, 0, 0, 0], [.2, .0, .3, .2, .3, .0], 4.99, "images/pakistani-cuisine/drink-shardai.jpg");
   allDrinks.push(one);
-  var one = new Dish ("Ras Malai", "Pakistan", "Dessert", [2, 0, 0, 0, 0, 1], [.0, .0, .4, .4, .1, .1], 4.99, "images/pakistani-cuisine/dessert-rasmalai.jpg");
+  var one = new Dish ("Ras Malai", "PAKISTAN", "Dessert", [2, 0, 0, 0, 0, 1], [.0, .0, .4, .4, .1, .1], 4.99, "images/pakistani-cuisine/dessert-rasmalai.jpg");
   allDesserts.push(one);
-  var one = new Dish ("Kulfi Falooda", "Pakistan", "Dessert", [2, 0, 0, 0, 0, 2], [.0, .0, .3, .5, .2, .0], 5.99, "images/pakistani-cuisine/dessert-kulfifalooda.jpg");
+  var one = new Dish ("Kulfi Falooda", "PAKISTAN", "Dessert", [2, 0, 0, 0, 0, 2], [.0, .0, .3, .5, .2, .0], 5.99, "images/pakistani-cuisine/dessert-kulfifalooda.jpg");
   allDesserts.push(one);
-  var one = new Dish ("Gulab Jamun", "Pakistan", "Dessert", [5, 0, 0, 0, 0, 3], [.0, .0, .0, .3, .3, .4], 4.99, "images/pakistani-cuisine/dessert-gulabjamun.jpg");
+  var one = new Dish ("Gulab Jamun", "PAKISTAN", "Dessert", [5, 0, 0, 0, 0, 3], [.0, .0, .0, .3, .3, .4], 4.99, "images/pakistani-cuisine/dessert-gulabjamun.jpg");
   allDesserts.push(one);
-  var one = new Dish ("Kheer", "Pakistan", "Dessert", [4, 0, 0, 0, 0, 3], [.0, .0, .2, .4, .4, .0], 3.99, "images/pakistani-cuisine/dessert-kheer.jpg");
+  var one = new Dish ("Kheer", "PAKISTAN", "Dessert", [4, 0, 0, 0, 0, 3], [.0, .0, .2, .4, .4, .0], 3.99, "images/pakistani-cuisine/dessert-kheer.jpg");
   allDesserts.push(one);
-  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 1, 1, 0, 0, 0], [.0, .2, .3, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-cholay.JPG");
+  var one = new Dish ("Cholay", "PAKISTAN", "Starter", [1, 1, 1, 0, 0, 0], [.0, .2, .3, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-cholay.JPG");
   allStarters.push(one);
-  var one = new Dish ("Pani Puri", "Pakistan", "Starter", [0, 1, 0, 0, 0, 0], [.0, .2, .3, .0, .4, .1], 4.99, "images/pakistani-cuisine/starter-panipuri.jpg");
+  var one = new Dish ("Pani Puri", "PAKISTAN", "Starter", [0, 1, 0, 0, 0, 0], [.0, .2, .3, .0, .4, .1], 4.99, "images/pakistani-cuisine/starter-panipuri.jpg");
   allStarters.push(one);
-  var one = new Dish ("Samosa", "Pakistan", "Starter", [0, 1, 0, 0, 0, 1], [.0, .3, .2, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-samosas.jpg");
+  var one = new Dish ("Samosa", "PAKISTAN", "Starter", [0, 1, 0, 0, 0, 1], [.0, .3, .2, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-samosas.jpg");
   allStarters.push(one);
-  var one = new Dish ("Pakora", "Pakistan", "Starter", [0, 1, 0, 0, 0, 2], [.0, .3, .2, .0, .2, .3], 3.99, "images/pakistani-cuisine/starter-pakora.jpg");
+  var one = new Dish ("Pakora", "PAKISTAN", "Starter", [0, 1, 0, 0, 0, 2], [.0, .3, .2, .0, .2, .3], 3.99, "images/pakistani-cuisine/starter-pakora.jpg");
+  allStarters.push(one);
+
+  var one = new Dish("Shuizhuyu", "CHINA", "Main Course", [2, 4, 0, 2, 4, 3], [.0, .3, .6, .0, .0, .1], 10.99, "images/chinese-cuisine/mc-shuizhuyu.jpg");
+  allMainCourses.push(one);
+  var one = new Dish("Yangxiezihuoguo", "CHINA", "Main Course", [2 ,5 ,0 ,2 ,5 ,5], [.0, .2, .7, .0, .0, .1], 21.99, "images/chinese-cuisine/mc-yangxiezihuoguo.jpg");
+  allMainCourses.push(one);
+  var one = new Dish("Yangzhouchaofan", "CHINA", "Main Course", [1,3,0,0,3,1], [.1, .2, .1, .0, .5, .1], 9.99 , "images/chinese-cuisine/mc-yangzhouchaofan.jpg");
+  allMainCourses.push(one);
+  var one = new Dish("Niuroumian", "CHINA", "Main Course", [1, 3, 0, 1, 5, 2], [.0, .2, .2, .0, .4, .2], 12.99, "images/chinese-cuisine/mc-niuroumian.jpg");
+  allMainCourses.push(one);
+  var one = new Dish("Wulongcha", "CHINA", "Drink", [0, 0, 3, 0, 0, 0], [.0, 1.0, .0, .0, .0, .0], 2.99 , "images/chinese-cuisine/drink-wulongcha.jpg");
+  allDrinks.push(one);
+  var one = new Dish("Wuliangye", "CHINA", "Drink", [0, 0, 2, 0, 1, 0], [.0, .0, .0, .0, 1.0, .0], 6.99, "images/chinese-cuisine/drink-wuliangye.jpg");
+  allDrinks.push(one);
+  var one = new Dish("Naicha", "CHINA", "Drink", [5, 0, 1, 0, 0, 2], [.0, .0, .0, .7, .3, .0], 3.99, "images/chinese-cuisine/drink-naicha.jpg");
+  allDrinks.push(one);
+  var one = new Dish("Qishui", "CHINA", "Drink", [5, 0, 1, 3, 0, 0], [1.0, .0, .0, .0, .0, .0], 2.99, "images/chinese-cuisine/drink-qishui.jpg");
+  allDrinks.push(one);
+  var one = new Dish("Wandouhuang", "CHINA", "Dessert", [5, 0, 0, 0, 0, 1], [.0, .1, .8, .0, .05, .05], 5.99, "images/chinese-cuisine/dessert-wandouhuang.jpg");
+  allDesserts.push(one);
+  var one = new Dish("Niangao", "CHINA", "Dessert", [5, 0, 0, 0, 0, 1], [.1, .1, .1, .0, .7, .0], 4.99, "images/chinese-cuisine/dessert-niangao.jpg");
+  allDesserts.push(one);
+  var one = new Dish("Liuliansu", "CHINA", "Dessert", [4, 0, 1, 1, 0, 0], [.4, .0, .0, .0, .5, .1], 8.99, "images/chinese-cuisine/dessert-liuliansu.jpg");
+  allDesserts.push(one);
+  var one = new Dish("Yangzhiganlu", "CHINA", "Dessert", [4, 0, 0, 3, 0, 0], [.5, .0, .0, .3, .2, .0], 7.99, "images/chinese-cuisine/dessert-yangzhiganlu.png");
+  allDesserts.push(one);
+  var one = new Dish("Xiaolongbao", "CHINA", "Starter", [1, 2, 0, 1, 3, 3], [.0, .2, .5, .0, .2, .1], 6.99, "images/chinese-cuisine/starter-xiaolongbao.jpg");
+  allStarters.push(one);
+  var one = new Dish("Banmuer", "CHINA", "Starter", [1, 2, 0, 2, 4, 0], [.0, .9, .0, .0, .0, .1], 5.99, "images/chinese-cuisine/starter-banmuer.jpg");
+  allStarters.push(one);
+  var one = new Dish("Lucai", "CHINA", "Starter", [2, 4, 0, 3, 5, 5], [.0, .1, .7, .0, .0, .2], 8.99, "images/chinese-cuisine/starter-lucai.jpg");
+  allStarters.push(one);
+  var one = new Dish("Xiangguqingcai", "CHINA", "Starter", [1, 3, 0, 0, 4, 0], [.0,.9, .0, .0, .0, .1], 7.99, "images/chinese-cuisine/starter-xiangguqingcai.jpg");
   allStarters.push(one);
   // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
+
+
 
 }
 User.prototype.generateFlavorProfile = function(){
