@@ -28,15 +28,6 @@ function Dish(nameIn, countryFrom, group, flavProfile, foodGProfile, cost, img){
   this.cost = cost;
   this.img = img;
 }
-//Used to toggle elements so the stuff is n the same page.
-function toggle(){
-  $("#resultsOne").toggle();
-  $("#resultsTwo").toggle();
-  $("#resultsThree").toggle();
-  $("#resultsFour").toggle();
-  $("#inputSection").toggle();
-  $("#displayOne").toggle();
-}
 //Flavor Profile object used to describe the properties of the food.
 function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
   this.sweet = thisSweet;
@@ -56,7 +47,7 @@ function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains
 }
 //Used to generate a user from the initial createUserForm
 function generateUser(nameIn, password, countryFrom, countryTo, allergies){
-  var newUser = new User(nameIn, password, countryFrom,countryTo,[],[],[],[],[],[]);
+  var newUser = new User(nameIn, password, countryFrom,countryTo,[],[],[],[],[0,0,0,0,0],[]);
   var thisFoodGroupProfile = [];
   var arrLength = allUsers.length;
 
@@ -90,28 +81,52 @@ function login(userName, password){
     }
   }
 }
+function displayDishesFrom(){
+    for(var i = 0; i < allStarters.length; i ++){
+      $("#resultsOne").text("");
+      $("#resultsOne").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
+      $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
+    }
+    for(var i = 0; i < allDrinks.length; i ++){
+      $("#resultsTwo").text("");
+      $("#resultsTwo").append("<h3><strong>Select Drinks:</strong></h3><hr></hr>");
+      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+    }
+    for(var i = 0; i < allMainCourses.length; i ++){
+      $("#resultsThree").text("");
+      $("#resultsThree").append("<h3><strong>Select Maincourse:</strong></h3><hr></hr>");
+      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
+    }
+    for(var i = 0; i < allDeserts.length; i ++){
+      $("#resultsFour").text("");
+      $("#resultsFour").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
+      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
+    }
+}
 //Used for assigning selected dishes to globalUsers properties.
 function sortSelectedDishesForUser(arrayOfDishObjects){
   for(var i = 0; i < arrayOfDishObjects.length; i ++){
     var currentDish = arrayOfDishObjects[i];
+
     if(!globalUser.checkForDishName(currentDish)){
+
       for(var j = 0; j < allStarters.length; j ++){
-        if(allStarters[j].name == currentDish && !globalUser.checkForDishName(currentDish)){
+        if(allStarters[j].name == currentDish){
           globalUser.starters.push(allStarters[j]);
         }
       }
       for(var j = 0; j < allDrinks.length; j ++){
-        if(allDrinks[j].name == currentDish && !globalUser.checkForDishName(currentDish)){
+        if(allDrinks[j].name == currentDish){
           globalUser.drinks.push(allDrinks[j]);
         }
       }
       for(var j = 0; j < allMainCourses.length; j ++){
-        if(allMainCourses[j].name == currentDish && globalUser.maincourses[j].name.indexOf(currentDish)== -1){
+        if(allMainCourses[j].name == currentDish){
           globalUser.maincourses.push(allMainCourses[j]);
         }
       }
       for(var j = 0; j < allDeserts.length; j ++){
-        if(allDeserts[j].name == currentDish && globalUser.deserts[j].name.indexOf(currentDish)== -1){
+        if(allDeserts[j].name == currentDish){
           globalUser.deserts.push(allDeserts[j]);
         }
       }
@@ -119,68 +134,77 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
   }
 }
 //Used to display all dish objects.
-function displayDishesFrom(){
-    for(var i = 0; i < allStarters.length; i ++){
-      $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
-    }
-    for(var i = 0; i < allDrinks.length; i ++){
-      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
-    }
-    for(var i = 0; i < allMainCourses.length; i ++){
-      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
-    }
-    for(var i = 0; i < allDeserts.length; i ++){
-      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
-    }
+function determineDishesToSuggest(){
+
+}
+function displayDishesTo(){
+  for(var i = 0; i < globalUser.starters.length; i ++){
+    $("#resultsFive").text("");
+    $("#resultsFive").append("<h3><strong>Recommended Starters:</strong></h3><hr></hr>");
+    $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.starters[i].name + "'" + "+>" + globalUser.starters[i].name  + "</div>");
+  }
+  for(var i = 0; i < globalUser.drinks.length; i ++){
+    $("#resultsSix").text("");
+    $("#resultsSix").append("<h3><strong>Recommended Drinks:</strong></h3><hr></hr>");
+    $("#resultsSix").append("<div class = 'col-md-3'><h3>" + globalUser.drinks[i].name + "</h3><img src="+ "'" + globalUser.drinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.drinks[i].name + "'" + "+>" + globalUser.drinks[i].name  + "</div>");
+  }
+  for(var i = 0; i < globalUser.maincourses.length; i ++){
+    $("#resultsSeven").text("");
+    $("#resultsSeven").append("<h3><strong>Recommended MainCourses:</strong></h3><hr></hr>");
+    $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.maincourses[i].name + "'" + "+>" + globalUser.maincourses[i].name  + "</div>");
+  }
+  for(var i = 0; i < globalUser.deserts.length; i ++){
+    $("#resultsEight").text("");
+    $("#resultsEight").append("<h3><strong>Recommended Deserts:</strong></h3><hr></hr>");
+    $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.deserts[i].name + "</h3><img src="+ "'" + globalUser.deserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + globalUser.deserts[i].name + "'" + "+>" + globalUser.deserts[i].name  + "</div>");
+  }
 }
 
-User.prototype.generateFlavorProfile = function(){
+User.prototype.getStarterFlavorProfile = function(){
   var startersLength = this.starters.length;
-  var drinksLength = this.drinks.length;
-  var maincoursesLength = this.maincourses.length;
-  var desertsLength = this.deserts.length;
-  var totalNumberOfDishes = startersLength + drinksLength + maincoursesLength + desertsLength;
-  var starterFlavorArray = [];
-  var drinksFlavorArray = [];
-  var mainCourseFlavorArray = [];
-  var desertsFlavorArray = [];
-  var totalFlavorArray = [0,0,0,0,0];
-
-  //Generate average vector for starters
+  var startersFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
   for(var i = 0; i < startersLength; i ++){
-    var currentDish = this.starters.flavProfile[i];
-    startersFlavorArray.addArrays(currentDish);
+    var currentDish = this.starters[i].flavProfile;
+    startersFlavorArray = startersFlavorArray.addArrays(currentDish);
   }
-  starterFlavorArray.divideArray(startersLength);
-
-  //Generate average vector for Drinks.
-  for(var i = 0; i < drinksLength; i ++){
-    var currentDish = this.drinks.flavProfile[i];
-    startersFlavorArray.addArrays(currentDish);
-  }
-  starterFlavorArray.divideArray(drinksLength);
-
-  //Generate average vector for Main course.
-  for(var i = 0; i < maincoursesLength; i ++){
-    var currentDish = this.maincourses.flavProfile[i];
-    startersFlavorArray.addArrays(currentDish);
-  }
-  starterFlavorArray.divideArray(maincoursesLength);
-
-  //Generate average vector for Deserts course.
-  for(var i = 0; i < desertsLength; i ++){
-    var currentDish = this.deserts.flavProfile[i];
-    startersFlavorArray.addArrays(currentDish);
-  }
-  starterFlavorArray.divideArray(desertsLength);
-  //Generate total flavor profile
-  totalFlavorArray.addArrays(starterFlavorArray);
-  totalFlavorArray.addArrays(drinksFlavorArray);
-  totalFlavorArray.addArrays(mainCourseFlavorArray);
-  totalFlavorArray.addArrays(desertsFlavorArray);
-  totalFlavorArray.divideArray(4);
-  return totalFlavorArray;
+  startersFlavorArray = startersFlavorArray.divideArray(startersLength);
+  return startersFlavorArray;
 }
+User.prototype.getDrinkFlavorProfile = function(){
+  var drinksLength = this.drinks.length;
+  var drinksFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < drinksLength; i ++){
+    var currentDish = this.drinks[i].flavProfile;
+    drinksFlavorArray = drinksFlavorArray.addArrays(currentDish);
+  }
+  drinksFlavorArray = drinksFlavorArray.divideArray(drinksLength);
+  return drinksFlavorArray;
+}
+User.prototype.getMainCourseFlavorProfile = function(){
+  var maincourseLength = this.maincourses.length;
+  var maincoursesFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < maincourseLength; i ++){
+    var currentDish = this.maincourses[i].flavProfile;
+    maincoursesFlavorArray = maincoursesFlavorArray.addArrays(currentDish);
+  }
+  maincoursesFlavorArray = maincoursesFlavorArray.divideArray(maincourseLength);
+  return maincoursesFlavorArray;
+}
+User.prototype.getDesertFlavorProfile = function(){
+  var desertLength = this.deserts.length;
+  var desertsFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < desertLength; i ++){
+    var currentDish = this.deserts[i].flavProfile;
+    desertsFlavorArray = desertsFlavorArray.addArrays(currentDish);
+  }
+  desertsFlavorArray = desertsFlavorArray.divideArray(desertLength);
+  return desertsFlavorArray;
+}
+
 User.prototype.checkForDishName = function(currentDishNameIn){
   for(var i = 0; i < this.starters.length; i ++){
     if(this.starters[i].name == currentDishNameIn){
@@ -218,8 +242,6 @@ Array.prototype.divideArray = function(constant){
   }
   return outputArray;
 }
-
-
 //Generates all Dish Objects
 function generateAllDishes(){
   //PAKISTANI
@@ -236,6 +258,27 @@ function generateAllDishes(){
   // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
 
 }
+//Used to toggle elements so the stuff is n the same page.
+function toggle(){
+  $("#resultsOne").toggle();
+  $("#resultsTwo").toggle();
+  $("#resultsThree").toggle();
+  $("#resultsFour").toggle();
+  $("#inputSection").toggle();
+  $("#displayOne").toggle();
+}
+function toggle2(){
+  $("#resultsOne").toggle();
+  $("#resultsTwo").toggle();
+  $("#resultsThree").toggle();
+  $("#resultsFour").toggle();
+  $("#resultsFive").toggle();
+  $("#resultsSix").toggle();
+  $("#resultsSeven").toggle();
+  $("#resultsEight").toggle();
+  $("button#displayOne").toggle();
+}
+
 $(document).ready(function(){
   generateAllDishes(); //Initializing all Dish objects in our makeshift database.
   $("form#createUser").submit(function(event) {
@@ -271,6 +314,8 @@ $(document).ready(function(){
       selectedDishes.push($(this).val());
     });
     sortSelectedDishesForUser(selectedDishes);
+    toggle2();
+    displayDishesTo();
 
   })
 });
