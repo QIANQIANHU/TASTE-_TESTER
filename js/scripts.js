@@ -1,12 +1,12 @@
 var allStarters = [];
 var allDrinks = [];
 var allMainCourses = [];
-var allDeserts = [];
+var allDesserts = [];
 
 var allUsers = [];
 var globalUser = null;
 //User Object, used with allUser and globalUser to create a dumb database.
-function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, deserts, flavorProfile, foodGroupProfile){
+function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, desserts, flavorProfile, foodGroupProfile){
   this.name = nameIn;
   this.password = password;
   this.from = countryFrom;
@@ -14,7 +14,7 @@ function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, m
   this.starters = starterDishes;
   this.drinks = drinks;
   this.maincourses = maincourses;
-  this.deserts = deserts;
+  this.desserts = desserts;
   this.flavProfile = null;
   this.foodGProfile = null;
 }
@@ -113,23 +113,45 @@ function generateDishes(){
       $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
       toggle();
     }
-    for(var i = 0; i < allDeserts.length; i ++){
-      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
+    for(var i = 0; i < allDesserts.length; i ++){
+      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDesserts[i].name + "</h3><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDesserts[i].name + "'" + "+>" + allDesserts[i].name  + "</div>");
       toggle();
     }
 }
 //Generates all Dish Objects
 function generateFood(){
   //PAKISTANI
-  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
+  var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 1, 1], [.0, .1, .3, .1, .4, .1], 19.99, "images/pakistani-cuisine/maincourse-chicken-biryani.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
+  var one = new Dish ("Chicken Karahi", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .3, .4, .0, .0, .3], 11.99, "images/pakistani-cuisine/maincourse-chicken-karahi.jpg");
   allMainCourses.push(one);
-  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
+  var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .2, .4, .2, .0, .2], 14.99, "images/pakistani-cuisine/maincourse-chickenqorma.jpg");
+  allMainCourses.push(one);
+  var one = new Dish("Okra subzi", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 1], [.0, .5, .3, .0, .0, .2], 9.99, "images/pakistani-cuisine/maincourse-okrasubzi.jpg");
+  allMainCourses.push(one);
+  var one = new Dish ("Lassi", "Pakistan", "Drink", [1, 1, 0, 0, 0, 0], [.0, .0, .5, .5, .0, .0], 2.99, "images/pakistani-cuisine/drink-lassi.jpg");
   allDrinks.push(one);
-  var one = new Dish ("RasmaLai", "Pakistan", "Desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
-  allDeserts.push(one);
-  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
+  var one = new Dish ("Kashmiri chai", "Pakistan", "Drink", [1, 1, 0, 0, 0, 1], [.0, .0, .4, .5, .1, .0], 4.99, "images/pakistani-cuisine/drink-kashmirichai.jpg");
+  allDrinks.push(one);
+  var one = new Dish ("Sugar cane juice", "Paksitan", "Drink", [5, 0, 0, 0, 0, 1], [.0, .0, .0, .5, .5], 1.99, "images/pakistani-cuisine/drink-sugarcanejuice.jpg");
+  allDrinks.push(one);
+  var one = new Dish ("Shardai", "Pakistan", "Drink", [3, 1, 0, 0, 0, 0], [.2, .0, .3, .2, .3, .0], 4.99, "images/pakistani-cuisine/drink-shardai.jpg");
+  allDrinks.push(one);
+  var one = new Dish ("Ras Malai", "Pakistan", "Dessert", [2, 0, 0, 0, 0, 1], [.0, .0, .4, .4, .1, .1], 4.99, "images/pakistani-cuisine/dessert-rasmalai.jpg");
+  allDesserts.push(one);
+  var one = new Dish ("Kulfi Falooda", "Pakistan", "Dessert", [2, 0, 0, 0, 0, 2], [.0, .0, .3, .5, .2, .0], 5.99, "images/pakistani-cuisine/dessert-kulfifalooda.jpg");
+  allDesserts.push(one);
+  var one = new Dish ("Gulab Jamun", "Pakistan", "Dessert", [5, 0, 0, 0, 0, 3], [.0, .0, .0, .3, .3, .4], 4.99, "images/pakistani-cuisine/dessert-gulabjamun.jpg");
+  allDesserts.push(one);
+  var one = new Dish ("Kheer", "Pakistan", "Dessert", [4, 0, 0, 0, 0, 3], [.0, .0, .2, .4, .4, .0], 3.99, "images/pakistani-cuisine/dessert-kheer.jpg");
+  allDesserts.push(one);
+  var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 1, 1, 0, 0, 0], [.0, .2, .3, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-cholay.JPG");
+  allStarters.push(one);
+  var one = new Dish ("Pani Puri", "Pakistan", "Starter", [0, 1, 0, 0, 0, 0], [.0, .2, .3, .0, .4, .1], 4.99, "images/pakistani-cuisine/starter-panipuri.jpg");
+  allStarters.push(one);
+  var one = new Dish ("Samosa", "Pakistan", "Starter", [0, 1, 0, 0, 0, 1], [.0, .3, .2, .0, .3, .2], 4.99, "images/pakistani-cuisine/starter-samosas.jpg");
+  allStarters.push(one);
+  var one = new Dish ("Pakora", "Pakistan", "Starter", [0, 1, 0, 0, 0, 2], [.0, .3, .2, .0, .2, .3], 3.99, "images/pakistani-cuisine/starter-pakora.jpg");
   allStarters.push(one);
   // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
 
@@ -138,12 +160,12 @@ User.prototype.generateFlavorProfile = function(){
   var startersLength = this.starters.length;
   var drinksLength = this.drinks.length;
   var maincoursesLength = this.maincourses.length;
-  var desertsLength = this.deserts.length;
-  var totalNumberOfDishes = startersLength + drinksLength + maincoursesLength + desertsLength;
+  var dessertsLength = this.desserts.length;
+  var totalNumberOfDishes = startersLength + drinksLength + maincoursesLength + dessertsLength;
   var starterFlavorArray = [];
   var drinksFlavorArray = [];
   var mainCourseFlavorArray = [];
-  var desertsFlavorArray = [];
+  var dessertsFlavorArray = [];
   var totalFlavorArray = [0,0,0,0,0];
 
   //Generate average vector for starters
@@ -167,17 +189,17 @@ User.prototype.generateFlavorProfile = function(){
   }
   starterFlavorArray.divideArray(maincoursesLength);
 
-  //Generate average vector for Deserts course.
-  for(var i = 0; i < desertsLength; i ++){
-    var currentDish = this.deserts.flavProfile[i];
+  //Generate average vector for desserts course.
+  for(var i = 0; i < dessertsLength; i ++){
+    var currentDish = this.desserts.flavProfile[i];
     startersFlavorArray.addArrays(currentDish);
   }
-  starterFlavorArray.divideArray(desertsLength);
+  starterFlavorArray.divideArray(dessertsLength);
   //Generate total flavor profile
   totalFlavorArray.addArrays(starterFlavorArray);
   totalFlavorArray.addArrays(drinksFlavorArray);
   totalFlavorArray.addArrays(mainCourseFlavorArray);
-  totalFlavorArray.addArrays(desertsFlavorArray);
+  totalFlavorArray.addArrays(dessertsFlavorArray);
   totalFlavorArray.divideArray(4);
   return totalFlavorArray;
 }
@@ -195,7 +217,7 @@ Array.prototype.divideArray = function(constant){
   }
   return outputArray;
 }
-// generateUser -> display food from their from country(allergies, vegetarian) -> select -> generates flavor/food group profile from their starteres/Drinks/Maincourses/deserts
+// generateUser -> display food from their from country(allergies, vegetarian) -> select -> generates flavor/food group profile from their starteres/Drinks/Maincourses/desserts
 // -> Filter any country. ->Display result for to country.
 $(document).ready(function(){
   $("form#generateDish").submit(function(event) {
