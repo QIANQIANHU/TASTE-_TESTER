@@ -56,7 +56,7 @@ function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains
 }
 //Used to generate a user from the initial createUserForm
 function generateUser(nameIn, password, countryFrom, countryTo, allergies){
-  var newUser = new User(nameIn, password, countryFrom,countryTo,null,null,null,null,null,null);
+  var newUser = new User(nameIn, password, countryFrom,countryTo,[],[],[],[],[],[]);
   var thisFoodGroupProfile = [];
   var arrLength = allUsers.length;
 
@@ -94,24 +94,26 @@ function login(userName, password){
 function sortSelectedDishesForUser(arrayOfDishObjects){
   for(var i = 0; i < arrayOfDishObjects.length; i ++){
     var currentDish = arrayOfDishObjects[i];
-    for(var j = 0; j < allStarters.length; j ++){
-      if(allStarters[j].name == currentDish){
-        globalUser.starters.push(allStarters[j]);
+    if(!globalUser.checkForDishName(currentDish)){
+      for(var j = 0; j < allStarters.length; j ++){
+        if(allStarters[j].name == currentDish && !globalUser.checkForDishName(currentDish)){
+          globalUser.starters.push(allStarters[j]);
+        }
       }
-    }
-    for(var j = 0; j < allDrinks.length; j ++){
-      if(allDrinks[j].name == currentDish){
-        globalUser.drinks.push(allDrinks[j]);
+      for(var j = 0; j < allDrinks.length; j ++){
+        if(allDrinks[j].name == currentDish && !globalUser.checkForDishName(currentDish)){
+          globalUser.drinks.push(allDrinks[j]);
+        }
       }
-    }
-    for(var j = 0; j < allMainCourses.length; j ++){
-      if(allMainCourses[j].name == currentDish){
-        globalUser.maincourses.push(allMainCourses[j]);
+      for(var j = 0; j < allMainCourses.length; j ++){
+        if(allMainCourses[j].name == currentDish && globalUser.maincourses[j].name.indexOf(currentDish)== -1){
+          globalUser.maincourses.push(allMainCourses[j]);
+        }
       }
-    }
-    for(var j = 0; j < allDeserts.length; j ++){
-      if(allDeserts[j].name == currentDish){
-        globalUser.deserts.push(allDeserts[j]);
+      for(var j = 0; j < allDeserts.length; j ++){
+        if(allDeserts[j].name == currentDish && globalUser.deserts[j].name.indexOf(currentDish)== -1){
+          globalUser.deserts.push(allDeserts[j]);
+        }
       }
     }
   }
@@ -131,6 +133,7 @@ function displayDishesFrom(){
       $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
     }
 }
+
 User.prototype.generateFlavorProfile = function(){
   var startersLength = this.starters.length;
   var drinksLength = this.drinks.length;
@@ -178,6 +181,29 @@ User.prototype.generateFlavorProfile = function(){
   totalFlavorArray.divideArray(4);
   return totalFlavorArray;
 }
+User.prototype.checkForDishName = function(currentDishNameIn){
+  for(var i = 0; i < this.starters.length; i ++){
+    if(this.starters[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.drinks.length; i ++){
+    if(this.drinks[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.maincourses.length; i ++){
+    if(this.maincourses[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.deserts.length; i ++){
+    if(this.deserts[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  return false;
+}
 Array.prototype.addArrays = function(arrayIn) {
   var outputArray = [];
   for(var i = 0; i < arrayIn.length; i ++){
@@ -192,6 +218,8 @@ Array.prototype.divideArray = function(constant){
   }
   return outputArray;
 }
+
+
 //Generates all Dish Objects
 function generateAllDishes(){
   //PAKISTANI
@@ -242,7 +270,6 @@ $(document).ready(function(){
     $("input:checkbox[name=selected]:checked").each(function(){
       selectedDishes.push($(this).val());
     });
-    console.log(selectedDishes);
     sortSelectedDishesForUser(selectedDishes);
 
   })
