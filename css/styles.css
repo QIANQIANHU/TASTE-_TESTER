@@ -1,10 +1,15 @@
-#resultsOne, #resultsTwo, #resultsThree, #resultsFour {
+#resultsOne, #resultsTwo, #resultsThree, #resultsFour, #displayOne {
   display: none;
   margin-bottom: 2em;
 }
 
 img {
-  height: 10em;
-  width: 10em;
-  margin-left: 1em;
+  margin: auto;
+  width: 100%;
+}
+
+.col-md-3 {
+  background-color: grey;
+  color: white;
+  text-align: center;
 }

@@ -5,7 +5,7 @@ var allDeserts = [];
 
 var allUsers = [];
 var globalUser = null;
-
+//User Object, used with allUser and globalUser to create a dumb database.
 function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, deserts, flavorProfile, foodGroupProfile){
   this.name = nameIn;
   this.password = password;
@@ -18,7 +18,7 @@ function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, m
   this.flavProfile = null;
   this.foodGProfile = null;
 }
-
+//Dish Object, used to dynamically generate Dishes that the current globalUser would prefer.
 function Dish(nameIn, countryFrom, group, flavProfile, foodGProfile, cost, img){
   this.name = nameIn;
   this.countryFrom = countryFrom;
@@ -28,14 +28,16 @@ function Dish(nameIn, countryFrom, group, flavProfile, foodGProfile, cost, img){
   this.cost = cost;
   this.img = img;
 }
+//Used to toggle elements so the stuff is n the same page.
 function toggle(){
   $("#resultsOne").toggle();
   $("#resultsTwo").toggle();
   $("#resultsThree").toggle();
   $("#resultsFour").toggle();
   $("#inputSection").toggle();
+  $("#displayOne").toggle();
 }
-
+//Flavor Profile object used to describe the properties of the food.
 function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
   this.sweet = thisSweet;
   this.salty = thisSalty;
@@ -43,6 +45,7 @@ function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
   this.sour = thisSour;
   this.umani = thisUmani;
 }
+//FoodGroupProfile used to describe the portion of the food.
 function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains, thisOil){
   this.fruit = thisFruit;
   this.vegetable = thisVeg;
@@ -51,6 +54,7 @@ function FoodGroupProfile(thisFruit, thisVeg, thisProtein, thisDairy, thisGrains
   this.grain = thisGrains;
   this.oil = thisOil;
 }
+//Used to generate a user from the initial createUserForm
 function generateUser(nameIn, password, countryFrom, countryTo, allergies){
   var newUser = new User(nameIn, password, countryFrom,countryTo,null,null,null,null,null,null);
   var thisFoodGroupProfile = [];
@@ -81,6 +85,7 @@ function generateUser(nameIn, password, countryFrom, countryTo, allergies){
     return true;
   }
 }
+//Sets globalUser to profile if user entered correct username or password.
 function login(userName, password){
   var currentUser = null;
   for(var i = 0; i < allUsers.length; i ++){
@@ -94,25 +99,27 @@ function login(userName, password){
     }
   }
 }
+//Used to display all dish objects.
 function generateDishes(){
-  for(var i = 0; i < allStarters.length; i ++){
-    $("#resultsOne").append("<img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
-  //  toggle();
-  }
-  for(var i = 0; i < allDrinks.length; i ++){
-    $("#resultsTwo").append("<img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
-  // s  toggle();
-  }
-  for(var i = 0; i < allMainCourses.length; i ++){
-    $("#resultsThree").append("<img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
-    toggle();
-  }
-  for(var i = 0; i < allDeserts.length; i ++){
-    $("#resultsFour").append("<img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>");
-    toggle();
-  }
+    for(var i = 0; i < allStarters.length; i ++){
+      $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
+    //  toggle();
+    }
+    for(var i = 0; i < allDrinks.length; i ++){
+      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+    // s  toggle();
+    }
+    for(var i = 0; i < allMainCourses.length; i ++){
+      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
+      toggle();
+    }
+    for(var i = 0; i < allDeserts.length; i ++){
+      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
+      toggle();
+    }
 }
-function generatePakistaniFood(){
+//Generates all Dish Objects
+function generateFood(){
   //PAKISTANI
   var one = new Dish("Chicken Biryani", "Pakistan", "Main Course", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
   allMainCourses.push(one);
@@ -124,6 +131,8 @@ function generatePakistaniFood(){
   allDeserts.push(one);
   var one = new Dish ("Cholay", "Pakistan", "Starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
   allStarters.push(one);
+  // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
+
 }
 User.prototype.generateFlavorProfile = function(){
   var startersLength = this.starters.length;
@@ -188,7 +197,6 @@ Array.prototype.divideArray = function(constant){
 }
 // generateUser -> display food from their from country(allergies, vegetarian) -> select -> generates flavor/food group profile from their starteres/Drinks/Maincourses/deserts
 // -> Filter any country. ->Display result for to country.
-
 $(document).ready(function(){
   $("form#generateDish").submit(function(event) {
     console.log("login");
@@ -223,4 +231,11 @@ $(document).ready(function(){
       //switch to userpage
     }
   });
+  $("form#resultFirst").submit(function(event) {
+    var selectedDishes = [];
+    $("input:checkbox[name=selected]:checked").each(function(){
+      selectedDishes.push($(this).val());
+    });
+
+  })
 });
