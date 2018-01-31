@@ -3,14 +3,68 @@
   margin-bottom: 2em;
 }
 
+body{
+  background-color: #A6998C;
+}
+
 img {
   margin: auto;
   width: 100%
 }
-
+/*
 .col-md-3 {
-  background-color: grey;
   float: left;
   color: white;
   text-align: center;
+}*/
+
+button{
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: fantasy;
+  margin: 30px;}
+
+h4 {
+  font-family: monospace;
+  margin: 20px;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+h6 {
+  font-family: monospace;
+  margin: 10px;
+  text-align: left;
+  font-size: 18px;
+
+}
+
+.preference {
+  text-align: left;
+  font-size: 15px;
+  font-family: monospace;
+}
+
+#foodie{
+  width: 100%;
+  height: 100%;
+  margin-right: 0px;
+  border-right: 0px;
+}
+p {
+  text-align: center;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.row {
+  background-color: #E5D5C1;
+  border: 2px solid #2D2A2A;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

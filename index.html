@@ -10,27 +10,34 @@
   </head>
   <body>
     <div class="container">
+        <h1>Food Matcher</h1>
+        <p>Matching your flavor profile with foods across the world!</p>
 
-        <h1>Taste Testing</h1>
+        <div class="row" id ="inputSection">
+          <div class="col-md-4">
+            <form id = "login">
+              <h4>Log In</h4><hr></hr>
+              <div class="preference">
+                <label for="dishName"><h6>Name: </h6></label>
+                <input id="nameLogIn" class="form-control" type="text">
+                <label for="countryFrom"><h6>Password: </h6></label>
+                <input id="passwordLogin" class="form-control" type="password">
+              </div>
+              <button type="submit" id="loginButton" class="btn btn-secondary">Login</button>
+              <br>
+            </form>
 
-      <div class="row" id ="inputSection">
-        <div class="col-md-12">
-          <form id = "login">
-            <h4><strong>Log In</strong><h4><hr></hr>
-            <label for="dishName"><h6><strong>Name: </strong></h6></label>
-            <input id="nameLogIn" class="form-control" type="text">
-            <label for="countryFrom"><h6><strong>Password: </strong></h6></label>
-            <input id="passwordLogin" class="form-control" type="text">
-            <button type="submit" id="loginButton">Login</button>
-            <br>
-          </form>
           <form id ="createUser">
-            <h4><strong>Create a new Account</strong><h4><hr></hr>
-            <label for="name"><h6><strong>Name: </strong></h6></label>
-            <input id="name" class="form-control" type="text">
-            <label for="password"><h6><strong>Password: </strong></h6></label>
-            <input id="password" class="form-control" type="text">
-            <h6><strong>Select the Country You're From:</strong></h6>
+            <h4>Create a new Account</h4><hr></hr>
+
+            <div class="preference">
+              <label for="name"><h6>Name: </h6></label>
+              <input id="name" class="form-control" type="text"><br>
+              <label for="password"><h6>Password: </h6></label>
+              <input id="password" class="form-control" type="password">
+            </div>
+            <br>
+            <h6>Select the Country You're From:</h6>
             <select class="form-control" id="countryFrom">
               <option value="US">United States</option>
               <option value="CHINA">China</option>
@@ -38,7 +45,8 @@
               <option value="KYRGYZSTAN">Kyrgyzstan</option>
               <option value="ITALY">Italy</option>
             </select>
-            <h6><strong>Select the Country You're Visiting:</strong></h6>
+            <br>
+            <h6>Select the Country You're Visiting:</h6>
             <select class="form-control" id="countryTo">
               <option value="US">United States</option>
               <option value="CHINA">China</option>
@@ -46,14 +54,25 @@
               <option value="KYRGYZSTAN">Kyrgyzstan</option>
               <option value="ITALY">Italy</option>
             </select>
-            <h6><strong>Allergies/Dietary Preferences</strong></h6>
+            <br>
+            <h6>Allergies/Dietary Preferences</h6>
+            <div class="preference">
             <input type="checkbox" name="allergy" value="Lactose">Lactose Intolerant<br>
             <input type="checkbox" name="allergy" value="Vegeterian">Vegeterian<br>
             <input type="checkbox" name="allergy" value="Vegan">Vegan<br>
-            <button type="submit" id="createUserButton">Create Account</button>
+            <input type="checkbox" name="allergy" value="Other">Other (cannot eat certain foods because of allergy or religious reasons)<br>
+            </div>
+            <button type="submit" id="createUserButton" class="btn btn-secondary">Create Account</button>
           </form>
         </div>
+
+        <div class="col-md-8">
+          <img id="foodie" src="images/foodie.jpg" alt="food picture">
+        </div>
       </div>
+
+
+
         <form id = "resultFirst">
           <div class = "row" id="resultsOne">
           </div>
