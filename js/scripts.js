@@ -112,7 +112,7 @@ function displayDishesFrom(){
     }
   }
 }
-//Used to display all dish objects.
+// Used to display all dish objects.
 function displayDishesTo(){
   $("#resultsFive").text("");
   $("#resultsFive").append("<h3><strong>Recommended Starters:</strong></h3><hr></hr>");
@@ -160,6 +160,135 @@ function displayDishesTo(){
     }
   }
 }
+//Sorts what user selected and puts into users dish properties.
+function sortSelectedDishesForUser(arrayOfDishObjects){
+  for(var i = 0; i < arrayOfDishObjects.length; i ++){
+    var currentDish = arrayOfDishObjects[i];
+    if(!globalUser.checkForDishName(currentDish)){
+      for(var j = 0; j < allStarters.length; j ++){
+        if(allStarters[j].name == currentDish){
+          globalUser.starters.push(allStarters[j]);
+        }
+      }
+      for(var j = 0; j < allDrinks.length; j ++){
+        if(allDrinks[j].name == currentDish){
+          globalUser.drinks.push(allDrinks[j]);
+        }
+      }
+      for(var j = 0; j < allMainCourses.length; j ++){
+        if(allMainCourses[j].name == currentDish){
+          globalUser.maincourses.push(allMainCourses[j]);
+        }
+      }
+      for(var j = 0; j < allDesserts.length; j ++){
+        if(allDesserts[j].name == currentDish){
+          globalUser.desserts.push(allDesserts[j]);
+        }
+      }
+    }
+  }
+}
+
+User.prototype.getStarterFlavorProfile = function(){
+  var startersLength = this.starters.length;
+  var startersFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < startersLength; i ++){
+    var currentDish = this.starters[i].flavProfile;
+    startersFlavorArray = startersFlavorArray.addArrays(currentDish);
+  }
+  startersFlavorArray = startersFlavorArray.divideArray(startersLength);
+  return startersFlavorArray;
+}
+User.prototype.getDrinkFlavorProfile = function(){
+  var drinksLength = this.drinks.length;
+  var drinksFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < drinksLength; i ++){
+    var currentDish = this.drinks[i].flavProfile;
+    drinksFlavorArray = drinksFlavorArray.addArrays(currentDish);
+  }
+  drinksFlavorArray = drinksFlavorArray.divideArray(drinksLength);
+  return drinksFlavorArray;
+}
+User.prototype.getMainCourseFlavorProfile = function(){
+  var maincourseLength = this.maincourses.length;
+  var maincoursesFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < maincourseLength; i ++){
+    var currentDish = this.maincourses[i].flavProfile;
+    maincoursesFlavorArray = maincoursesFlavorArray.addArrays(currentDish);
+  }
+  maincoursesFlavorArray = maincoursesFlavorArray.divideArray(maincourseLength);
+  return maincoursesFlavorArray;
+}
+User.prototype.getDessertFlavorProfile = function(){
+  var dessertLength = this.desserts.length;
+  var dessertsFlavorArray = [0,0,0,0,0];
+  //Generate average vector for desert
+  for(var i = 0; i < dessertLength; i ++){
+    var currentDish = this.desserts[i].flavProfile;
+    dessertsFlavorArray = dessertsFlavorArray.addArrays(currentDish);
+  }
+  dessertsFlavorArray = dessertsFlavorArray.divideArray(dessertLength);
+  return dessertsFlavorArray;
+}
+User.prototype.checkForDishName = function(currentDishNameIn){
+  for(var i = 0; i < this.starters.length; i ++){
+    if(this.starters[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.drinks.length; i ++){
+    if(this.drinks[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.maincourses.length; i ++){
+    if(this.maincourses[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  for(var i = 0; i < this.desserts.length; i ++){
+    if(this.desserts[i].name == currentDishNameIn){
+      return true;
+    }
+  }
+  return false;
+}
+Array.prototype.checkMargin = function(){
+  var state = true;
+  for(var i = 0; i < this.length; i ++){
+    if(this[i]>5){
+      //Outside difference tolerance.
+      state = false;
+    }
+  }
+  //This Array fits our .3 Tolerance.
+  return state;
+}
+Array.prototype.addArrays = function(arrayIn) {
+  var outputArray = [];
+  for(var i = 0; i < arrayIn.length; i ++){
+    outputArray[i] = arrayIn[i] + this[i];
+  }
+  return outputArray;
+}
+Array.prototype.divideArray = function(constant){
+  var outputArray = [];
+  for(var i = 0; i < this.length; i ++){
+    outputArray[i] = this[i]/constant;
+  }
+  return outputArray;
+}
+Array.prototype.subArrays = function(arrayIn) {
+  var outputArray = [];
+  for(var i = 0; i < arrayIn.length; i ++){
+    outputArray[i] = Math.abs(arrayIn[i] - this[i]);
+  }
+  return outputArray;
+}
+//Used to toggle elements so the stuff is n the same page.
 //Generates all Dish Objects
 function generateAllDishes(){
   //PAKISTANI
@@ -261,135 +390,7 @@ function generateAllDishes(){
   allStarters.push(three);
   var three = new Dish("Boorsok", "KYRGYZSTAN", "Starter", [2, 0, 0, 0, 0, 0], [.0, .0, .1, .4, .25, .25], 2.50, "images/centralAsian-cuisine/starter-boorsok.jpg");
   allStarters.push(three);
-//Sorts what user selected and puts into users dish properties.
-function sortSelectedDishesForUser(arrayOfDishObjects){
-  for(var i = 0; i < arrayOfDishObjects.length; i ++){
-      var currentDish = arrayOfDishObjects[i];
-    if(!globalUser.checkForDishName(currentDish)){
-      for(var j = 0; j < allStarters.length; j ++){
-        if(allStarters[j].name == currentDish){
-          globalUser.starters.push(allStarters[j]);
-        }
-      }
-      for(var j = 0; j < allDrinks.length; j ++){
-        if(allDrinks[j].name == currentDish){
-          globalUser.drinks.push(allDrinks[j]);
-        }
-      }
-      for(var j = 0; j < allMainCourses.length; j ++){
-        if(allMainCourses[j].name == currentDish){
-          globalUser.maincourses.push(allMainCourses[j]);
-        }
-      }
-      for(var j = 0; j < allDesserts.length; j ++){
-        if(allDesserts[j].name == currentDish){
-          globalUser.desserts.push(allDesserts[j]);
-        }
-      }
-    }
-  }
 }
-
-User.prototype.getStarterFlavorProfile = function(){
-  var startersLength = this.starters.length;
-  var startersFlavorArray = [0,0,0,0,0];
-  //Generate average vector for desert
-  for(var i = 0; i < startersLength; i ++){
-    var currentDish = this.starters[i].flavProfile;
-    startersFlavorArray = startersFlavorArray.addArrays(currentDish);
-  }
-  startersFlavorArray = startersFlavorArray.divideArray(startersLength);
-  return startersFlavorArray;
-}
-User.prototype.getDrinkFlavorProfile = function(){
-  var drinksLength = this.drinks.length;
-  var drinksFlavorArray = [0,0,0,0,0];
-  //Generate average vector for desert
-  for(var i = 0; i < drinksLength; i ++){
-    var currentDish = this.drinks[i].flavProfile;
-    drinksFlavorArray = drinksFlavorArray.addArrays(currentDish);
-  }
-  drinksFlavorArray = drinksFlavorArray.divideArray(drinksLength);
-  return drinksFlavorArray;
-}
-User.prototype.getMainCourseFlavorProfile = function(){
-  var maincourseLength = this.maincourses.length;
-  var maincoursesFlavorArray = [0,0,0,0,0];
-  //Generate average vector for desert
-  for(var i = 0; i < maincourseLength; i ++){
-    var currentDish = this.maincourses[i].flavProfile;
-    maincoursesFlavorArray = maincoursesFlavorArray.addArrays(currentDish);
-  }
-  maincoursesFlavorArray = maincoursesFlavorArray.divideArray(maincourseLength);
-  return maincoursesFlavorArray;
-}
-User.prototype.getDessertFlavorProfile = function(){
-  var dessertLength = this.desserts.length;
-  var dessertsFlavorArray = [0,0,0,0,0];
-  //Generate average vector for desert
-  for(var i = 0; i < dessertLength; i ++){
-    var currentDish = this.desserts[i].flavProfile;
-    dessertsFlavorArray = dessertsFlavorArray.addArrays(currentDish);
-  }
-  dessertsFlavorArray = dessertsFlavorArray.divideArray(dessertLength);
-  return dessertsFlavorArray;
-}
-User.prototype.checkForDishName = function(currentDishNameIn){
-  for(var i = 0; i < this.starters.length; i ++){
-    if(this.starters[i].name == currentDishNameIn){
-      return true;
-    }
-  }
-  for(var i = 0; i < this.drinks.length; i ++){
-    if(this.drinks[i].name == currentDishNameIn){
-      return true;
-    }
-  }
-  for(var i = 0; i < this.maincourses.length; i ++){
-    if(this.maincourses[i].name == currentDishNameIn){
-      return true;
-    }
-  }
-  for(var i = 0; i < this.desserts.length; i ++){
-    if(this.desserts[i].name == currentDishNameIn){
-      return true;
-    }
-  }
-  return false;
-}
-Array.prototype.checkMargin = function(){
-  var state = true;
-  for(var i = 0; i < this.length; i ++){
-    if(this[i]>1){
-      //Outside difference tolerance.
-      state = false;
-    }
-  }
-  //This Array fits our .3 Tolerance.
-  return state;
-}
-Array.prototype.addArrays = function(arrayIn) {
-  var outputArray = [];
-  for(var i = 0; i < arrayIn.length; i ++){
-    outputArray[i] = arrayIn[i] + this[i];
-  }
-  return outputArray;
-}
-Array.prototype.divideArray = function(constant){
-  var outputArray = [];
-  for(var i = 0; i < this.length; i ++){
-    outputArray[i] = this[i]/constant;
-  }
-  return outputArray;
-}
-Array.prototype.subArrays = function(arrayIn) {
-  var outputArray = [];
-  for(var i = 0; i < arrayIn.length; i ++){
-    outputArray[i] = Math.abs(arrayIn[i] - this[i]);
-  }
-  return outputArray;
-}
-//Used to toggle elements so the stuff is n the same page.
 function toggle(){
   $("#resultsOne").toggle();
   $("#resultsTwo").toggle();
