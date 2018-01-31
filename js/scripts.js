@@ -1,12 +1,12 @@
 var allStarters = [];
 var allDrinks = [];
 var allMainCourses = [];
-var allDeserts = [];
+var allDesserts = [];
 
 var allUsers = [];
 var globalUser = null;
 //User Object, used with allUser and globalUser to create a dumb database.
-function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, deserts, flavorProfile, foodGroupProfile){
+function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, maincourses, desserts, flavorProfile, foodGroupProfile){
   this.name = nameIn;
   this.password = password;
   this.from = countryFrom;
@@ -14,7 +14,7 @@ function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, m
   this.starters = starterDishes;
   this.drinks = drinks;
   this.maincourses = maincourses;
-  this.deserts = deserts;
+  this.desserts = desserts;
   this.flavProfile = null;
   this.foodGProfile = null;
 }
@@ -89,7 +89,7 @@ function displayDishesFrom(){
   $("#resultsThree").text("");
   $("#resultsThree").append("<h3><strong>Select Maincourses:</strong></h3><hr></hr>");
   $("#resultsFour").text("");
-  $("#resultsFour").append("<h3><strong>Select Deserts:</strong></h3><hr></hr>");
+  $("#resultsFour").append("<h3><strong>Select Desserts:</strong></h3><hr></hr>");
 
   for(var i = 0; i < allStarters.length; i ++){
     if(allStarters[i].countryFrom == globalUser.from){
@@ -98,17 +98,17 @@ function displayDishesFrom(){
   }
   for(var i = 0; i < allDrinks.length; i ++){
     if(allDrinks[i].countryFrom == globalUser.from){
-    $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allMainCourses.length; i ++){
     if(allMainCourses[i].countryFrom == globalUser.from){
-    $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
+      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
     }
   }
-  for(var i = 0; i < allDeserts.length; i ++){
-    if(allDeserts[i].countryFrom == globalUser.from){
-    $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDeserts[i].name + "</h3><img src="+ "'" + allDeserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDeserts[i].name + "'" + "+>" + allDeserts[i].name  + "</div>");
+  for(var i = 0; i < allDesserts.length; i ++){
+    if(allDesserts[i].countryFrom == globalUser.from){
+      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDesserts[i].name + "</h3><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDesserts[i].name + "'" + "+>" + allDesserts[i].name  + "</div>");
     }
   }
 }
@@ -122,7 +122,7 @@ function displayDishesTo(){
   $("#resultsSeven").text("");
   $("#resultsSeven").append("<h3><strong>Recommended Maincourses:</strong></h3><hr></hr>");
   $("#resultsEight").text("");
-  $("#resultsEight").append("<h3><strong>Recommended Deserts:</strong></h3><hr></hr>");
+  $("#resultsEight").append("<h3><strong>Recommended Desserts:</strong></h3><hr></hr>");
   for(var i = 0; i < globalUser.starters.length; i ++){
     if(globalUser.starters[i].flavProfile.margin(globalUser.getStarterFlavorProfile()){
       $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
@@ -138,9 +138,9 @@ function displayDishesTo(){
       $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
     }
   }
-  for(var i = 0; i < globalUser.deserts.length; i ++){
-    if(globalUser.deserts[i].flavProfile.margin(globalUser.getDesertFlavorProfile()){
-      $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.deserts[i].name + "</h3><img src="+ "'" + globalUser.deserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+  for(var i = 0; i < globalUser.desserts.length; i ++){
+    if(globalUser.desserts[i].flavProfile.margin(globalUser.getDesertFlavorProfile()){
+      $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.desserts[i].name + "</h3><img src="+ "'" + globalUser.desserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
     }
   }
 }
@@ -165,9 +165,9 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
           globalUser.maincourses.push(allMainCourses[j]);
         }
       }
-      for(var j = 0; j < allDeserts.length; j ++){
-        if(allDeserts[j].name == currentDish){
-          globalUser.deserts.push(allDeserts[j]);
+      for(var j = 0; j < allDesserts.length; j ++){
+        if(allDesserts[j].name == currentDish){
+          globalUser.desserts.push(allDesserts[j]);
         }
       }
     }
@@ -208,15 +208,15 @@ User.prototype.getMainCourseFlavorProfile = function(){
   return maincoursesFlavorArray;
 }
 User.prototype.getDesertFlavorProfile = function(){
-  var desertLength = this.deserts.length;
-  var desertsFlavorArray = [0,0,0,0,0];
+  var dessertLength = this.desserts.length;
+  var dessertsFlavorArray = [0,0,0,0,0];
   //Generate average vector for desert
-  for(var i = 0; i < desertLength; i ++){
-    var currentDish = this.deserts[i].flavProfile;
-    desertsFlavorArray = desertsFlavorArray.addArrays(currentDish);
+  for(var i = 0; i < dessertLength; i ++){
+    var currentDish = this.desserts[i].flavProfile;
+    dessertsFlavorArray = dessertsFlavorArray.addArrays(currentDish);
   }
-  desertsFlavorArray = desertsFlavorArray.divideArray(desertLength);
-  return desertsFlavorArray;
+  dessertsFlavorArray = dessertsFlavorArray.divideArray(dessertLength);
+  return dessertsFlavorArray;
 }
 User.prototype.checkForDishName = function(currentDishNameIn){
   for(var i = 0; i < this.starters.length; i ++){
@@ -234,8 +234,8 @@ User.prototype.checkForDishName = function(currentDishNameIn){
       return true;
     }
   }
-  for(var i = 0; i < this.deserts.length; i ++){
-    if(this.deserts[i].name == currentDishNameIn){
+  for(var i = 0; i < this.desserts.length; i ++){
+    if(this.desserts[i].name == currentDishNameIn){
       return true;
     }
   }
@@ -271,22 +271,6 @@ Array.prototype.subArrays = function(arrayIn) {
     outputArray[i] = arrayIn[i] - this[i];
   }
   return outputArray;
-}
-//Generates all Dish Objects
-function generateAllDishes(){
-  //PAKISTANI
-  var one = new Dish("Chicken Biryani", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 20, "images/menu/pakistani cuisine/mc-chicken-biryani.jpg");
-  allMainCourses.push(one);
-  one = new Dish ("Chicken Karahi", "Pakistan", "maincourse", [0, 1, 0, 0, 0], [0, 1, 0, 1, 3], 15, "images/menu/pakistani cuisine/mc-chicken-karahi.jpg");
-  allMainCourses.push(one);
-  one = new Dish ("Lassi", "Pakistan", "drink", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/drink-lassi.jpg");
-  allDrinks.push(one);
-  one = new Dish ("RasmaLai", "Pakistan", "desert", [1, 1, 0, 0, 0], [0, 5, 5, 0, 0], 3, "images/menu/pakistani cuisine/rasmalai.jpg");
-  allDeserts.push(one);
-  one = new Dish ("Cholay", "Pakistan", "starter", [1, 2, 0, 0, 0], [0, 0, 0, 0, 0], 4, "images/menu/pakistani cuisine/cholay.JPG");
-  allStarters.push(one);
-  // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
-
 }
 //Used to toggle elements so the stuff is n the same page.
 function toggle(){
