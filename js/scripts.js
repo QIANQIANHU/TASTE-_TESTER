@@ -115,6 +115,8 @@ function displayDishesTo(){
   for(var i = 0; i < allStarters.length; i ++){
     var usersStarterFlavorProfile = globalUser.getStarterFlavorProfile();
     var currentDishesFlavorProfile = allStarters[i].flavProfile;
+    console.log(currentDishesFlavorProfile);
+    console.log(usersStarterFlavorProfile);
     var margin = currentDishesFlavorProfile.subArrays(usersStarterFlavorProfile);
     console.log("Starters: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
     if(allStarters[i].countryFrom == globalUser.to && margin.checkMargin()){
@@ -381,19 +383,13 @@ function generateAllDishes(){
   allStarters.push(three);
 }
 function toggle(){
-  $("#results").toggleClass("hidden");
+  $("#resultsContainerOne").toggleClass("hidden");
+
   $("#inputSection").toggleClass("hidden");
 }
 function toggle2(){
-  $("#resultsOne").toggle();
-  $("#resultsTwo").toggle();
-  $("#resultsThree").toggle();
-  $("#resultsFour").toggle();
-  $("#resultsFive").toggle();
-  $("#resultsSix").toggle();
-  $("#resultsSeven").toggle();
-  $("#resultsEight").toggle();
-  $("button#displayOne").toggle();
+  $("#resultsContainerOne").toggleClass("hidden");
+  $("#resultsContainerTwo").toggleClass("hidden");
 }
 function toggle3(){
   $(".hidden").toggle();

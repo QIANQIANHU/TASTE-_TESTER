@@ -9,15 +9,16 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
+    <div class ="container">
+      <div class="row" id="HELP">
         <div class="col-md-12">
           <h1>Food Matcher</h1>
           <p>Matching your flavor profile with foods across the world!</p>
         </div>
-
       </div>
-      <div class="row" id ="inputSection">
+    </div>
+    <div class="container" id ="inputSection">
+      <div class="row">
         <div class="col-md-4">
           <form id = "login">
             <h4>Log In</h4><hr></hr>
@@ -66,15 +67,20 @@
         </div>
       </div>
     </div>
-    <div class = "container hidden" id = "results">
-      <div class = "row" id="resultsOne">
+    <form id=resultFirst>
+      <div class = "container hidden" id="resultsContainerOne">
+        <div class = "row" id="resultsOne">
+        </div>
+        <div class = "row" id="resultsTwo">
+        </div>
+        <div class = "row" id="resultsThree">
+        </div>
+        <div class = "row" id="resultsFour">
+        </div>
+        <button type="submit" id="resultOne" class="btn btn-secondary">Save Selections</button>
       </div>
-      <div class = "row" id="resultsTwo">
-      </div>
-      <div class = "row" id="resultsThree">
-      </div>
-      <div class = "row" id="resultsFour">
-      </div>
+    </form>
+    <div class = "container hidden" id="resultsContainerTwo">
       <!-- <button type="submit" id="displayOne">Submit</button> -->
       <div class = "row" id="resultsFive">
       </div>
@@ -85,12 +91,7 @@
       <div class = "row" id="resultsEight">
       </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-            <button type="button" class="btn btn-secondary">Reselect</button>
-            <button type="button" class="btn btn-secondary">Checkout</button>
-        </div>
-      </div>
+    </div>
     </div>
   </body>
 </html>
