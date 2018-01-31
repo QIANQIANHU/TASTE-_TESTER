@@ -71,45 +71,46 @@ function login(userName, password){
 }
 function displayDishesFrom(){
   $("#resultsOne").text("");
-  $("#resultsOne").append("<h3><strong>Select Starters:</strong></h3><hr></hr>");
+  $("#resultsOne").append("<div class = 'col-md-12'><h3>Select Starters:</h3><hr></hr></div>");
   $("#resultsTwo").text("");
-  $("#resultsTwo").append("<h3><strong>Select Drinks:</strong></h3><hr></hr>");
+  $("#resultsTwo").append("<div class = 'col-md-12'><h3>Select Drinks:</h3><hr></hr></div>");
   $("#resultsThree").text("");
-  $("#resultsThree").append("<h3><strong>Select Maincourses:</strong></h3><hr></hr>");
+  $("#resultsThree").append("<div class = 'col-md-12'><h3>Select Maincourses:</h3><hr></hr></div>");
   $("#resultsFour").text("");
-  $("#resultsFour").append("<h3><strong>Select Desserts:</strong></h3><hr></hr>");
+  $("#resultsFour").append("<div class = 'col-md-12'><h3>Select Desserts:</h3><hr></hr></div>");
 
   for(var i = 0; i < allStarters.length; i ++){
     if(allStarters[i].countryFrom == globalUser.from){
-      $("#resultsOne").append("<div class = 'col-md-3'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
+      $("#resultsOne").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
     }
+    // + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>"
   }
   for(var i = 0; i < allDrinks.length; i ++){
     if(allDrinks[i].countryFrom == globalUser.from){
-      $("#resultsTwo").append("<div class = 'col-md-3'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+      $("#resultsTwo").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allMainCourses.length; i ++){
     if(allMainCourses[i].countryFrom == globalUser.from){
-      $("#resultsThree").append("<div class = 'col-md-3'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
+      $("#resultsThree").append("<div class = 'col-md-3'><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selected' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allDesserts.length; i ++){
     if(allDesserts[i].countryFrom == globalUser.from){
-      $("#resultsFour").append("<div class = 'col-md-3'><h3>" + allDesserts[i].name + "</h3><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food' height='100' width='100'>" + "<input type='checkbox' name='selected' value=" + "'" + allDesserts[i].name + "'" + "+>" + allDesserts[i].name  + "</div>");
+      $("#resultsFour").append("<div class = 'col-md-3'><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selected' value=" + "'" + allDesserts[i].name + "'" + "+>" + allDesserts[i].name  + "</div>");
     }
   }
 }
 // Used to display all dish objects.
 function displayDishesTo(){
   $("#resultsFive").text("");
-  $("#resultsFive").append("<h3><strong>Recommended Starters:</strong></h3><hr></hr>");
+  $("#resultsFive").append("<div class = 'col-md-12'><h3><strong>Recommended Starters:</strong></h3><hr></hr></div>");
   $("#resultsSix").text("");
-  $("#resultsSix").append("<h3><strong>Recommended Drinks:</strong></h3><hr></hr>");
+  $("#resultsSix").append("<div class = 'col-md-12'><h3><strong>Recommended Drinks:</strong></h3><hr></hr></div>");
   $("#resultsSeven").text("");
-  $("#resultsSeven").append("<h3><strong>Recommended Maincourses:</strong></h3><hr></hr>");
+  $("#resultsSeven").append("<div class = 'col-md-12'><h3><strong>Recommended Maincourses:</strong></h3><hr></hr></div>");
   $("#resultsEight").text("");
-  $("#resultsEight").append("<h3><strong>Recommended Desserts:</strong></h3><hr></hr>");
+  $("#resultsEight").append("<div class = 'col-md-12'><h3><strong>Recommended Desserts:</strong></h3><hr></hr></div>");
 
   for(var i = 0; i < allStarters.length; i ++){
     var usersStarterFlavorProfile = globalUser.getStarterFlavorProfile();
@@ -327,7 +328,7 @@ function generateAllDishes(){
   allDrinks.push(two);
   var two = new Dish("Naicha", "CHINA", "Drink", [5, 0, 1, 0, 0, 2],3.99, "images/chinese-cuisine/drink-naicha.jpg");
   allDrinks.push(two);
-  var two = new Dish("Qishui", "CHINA", "Drink", [5, 0, 1, 3, 0, 0], [1.0, .0, .0, .0, .0, .0], 2.99, "images/chinese-cuisine/drink-qishui.jpg");
+  var two = new Dish("Qishui", "CHINA", "Drink", [5, 0, 1, 3, 0, 0], 2.99, "images/chinese-cuisine/drink-qishui.jpg");
   allDrinks.push(two);
   var two = new Dish("Wandouhuang", "CHINA", "Dessert", [5, 0, 0, 0, 0, 1], 5.99, "images/chinese-cuisine/dessert-wandouhuang.jpg");
   allDesserts.push(two);
@@ -380,12 +381,8 @@ function generateAllDishes(){
   allStarters.push(three);
 }
 function toggle(){
-  $("#resultsOne").toggle();
-  $("#resultsTwo").toggle();
-  $("#resultsThree").toggle();
-  $("#resultsFour").toggle();
-  $("#inputSection").toggle();
-  $("#displayOne").toggle();
+  $("#results").toggleClass("hidden");
+  $("#inputSection").toggleClass("hidden");
 }
 function toggle2(){
   $("#resultsOne").toggle();
@@ -398,6 +395,10 @@ function toggle2(){
   $("#resultsEight").toggle();
   $("button#displayOne").toggle();
 }
+function toggle3(){
+  $(".hidden").toggle();
+}
+
 
 $(document).ready(function(){
   generateAllDishes(); //Initializing all Dish objects in our makeshift database.
