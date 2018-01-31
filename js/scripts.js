@@ -122,17 +122,42 @@ function displayDishesTo(){
   $("#resultsSeven").append("<h3><strong>Recommended Maincourses:</strong></h3><hr></hr>");
   $("#resultsEight").text("");
   $("#resultsEight").append("<h3><strong>Recommended Desserts:</strong></h3><hr></hr>");
-  for(var i = 0; i < globalUser.starters.length; i ++){
-    $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+
+  for(var i = 0; i < allStarters.length; i ++){
+    var usersStarterFlavorProfile = globalUser.getStarterFlavorProfile();
+    var currentDishesFlavorProfile = allStarters[i].flavProfile;
+    var margin = currentDishesFlavorProfile.subArrays(usersStarterFlavorProfile);
+    console.log("Starters: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
+    if(allStarters[i].countryFrom == globalUser.to && margin.checkMargin()){
+      $("#resultsFive").append("<div class = 'col-md-4'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
   }
-  for(var i = 0; i < globalUser.drinks.length; i ++){
-    $("#resultsSix").append("<div class = 'col-md-3'><h3>" + globalUser.drinks[i].name + "</h3><img src="+ "'" + globalUser.drinks[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+  for(var i = 0; i < allDrinks.length; i ++){
+    var usersDrinkFlavorProfile = globalUser.getDrinkFlavorProfile();
+    var currentDishesFlavorProfile = allDrinks[i].flavProfile;
+    var margin = currentDishesFlavorProfile.subArrays(usersDrinkFlavorProfile);
+    console.log("Drinks: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
+    if(allDrinks[i].countryFrom == globalUser.to && margin.checkMargin()){
+      $("#resultsSix").append("<div class = 'col-md-4'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
   }
-  for(var i = 0; i < globalUser.maincourses.length; i ++){
-    $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+  for(var i = 0; i < allMainCourses.length; i ++){
+    var usersMainCourseFlavorProfile = globalUser.getMainCourseFlavorProfile();
+    var currentDishesFlavorProfile = allMainCourses[i].flavProfile;
+    var margin = currentDishesFlavorProfile.subArrays(usersMainCourseFlavorProfile);
+    console.log("MainCourses: " + "\n" + "Margin: " + margin + "checkMargin: "+  margin.checkMargin());
+    if(allMainCourses[i].countryFrom == globalUser.to && margin.checkMargin()){
+      $("#resultsSeven").append("<div class = 'col-md-4'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
   }
-  for(var i = 0; i < globalUser.desserts.length; i ++){
-    $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.desserts[i].name + "</h3><img src="+ "'" + globalUser.desserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+  for(var i = 0; i < allDesserts.length; i ++){
+    var usersDessertFlavorProfile = globalUser.getDessertFlavorProfile();
+    var currentDishesFlavorProfile = allDesserts[i].flavProfile;
+    var margin = currentDishesFlavorProfile.subArrays(usersDessertFlavorProfile);
+    console.log("Desserts: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
+    if(allDesserts[i].countryFrom == globalUser.to && margin.checkMargin()){
+      $("#resultsEight").append("<div class = 'col-md-4'><h3>" + allDesserts[i].name + "</h3><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+    }
   }
 }
 //Generates all Dish Objects
@@ -236,9 +261,6 @@ function generateAllDishes(){
   allStarters.push(three);
   var three = new Dish("Boorsok", "KYRGYZSTAN", "Starter", [2, 0, 0, 0, 0, 0], [.0, .0, .1, .4, .25, .25], 2.50, "images/centralAsian-cuisine/starter-boorsok.jpg");
   allStarters.push(three);
-}
-
-  // var one = new Dish ("Chicken Qorma", "Pakistan", "Main Course", [0, 1, 0, 0, 0, 0], [0, 0, ]);
 //Sorts what user selected and puts into users dish properties.
 function sortSelectedDishesForUser(arrayOfDishObjects){
   for(var i = 0; i < arrayOfDishObjects.length; i ++){
@@ -301,7 +323,7 @@ User.prototype.getMainCourseFlavorProfile = function(){
   maincoursesFlavorArray = maincoursesFlavorArray.divideArray(maincourseLength);
   return maincoursesFlavorArray;
 }
-User.prototype.getDesertFlavorProfile = function(){
+User.prototype.getDessertFlavorProfile = function(){
   var dessertLength = this.desserts.length;
   var dessertsFlavorArray = [0,0,0,0,0];
   //Generate average vector for desert
@@ -335,15 +357,16 @@ User.prototype.checkForDishName = function(currentDishNameIn){
   }
   return false;
 }
-FlavorProfile.prototype.margin = function(inputArray){
-  var doThisOperation = this.subArrays(inputArray);
-  var arrLength = doThisOperation.length;
-  for(var i = 0; i < arrLength; i ++){
-    if(!(Math.abs(doThisOperation[i]) < .3)){
-      return false;
+Array.prototype.checkMargin = function(){
+  var state = true;
+  for(var i = 0; i < this.length; i ++){
+    if(this[i]>1){
+      //Outside difference tolerance.
+      state = false;
     }
   }
-  return true;
+  //This Array fits our .3 Tolerance.
+  return state;
 }
 Array.prototype.addArrays = function(arrayIn) {
   var outputArray = [];
@@ -362,7 +385,7 @@ Array.prototype.divideArray = function(constant){
 Array.prototype.subArrays = function(arrayIn) {
   var outputArray = [];
   for(var i = 0; i < arrayIn.length; i ++){
-    outputArray[i] = arrayIn[i] - this[i];
+    outputArray[i] = Math.abs(arrayIn[i] - this[i]);
   }
   return outputArray;
 }

@@ -5,11 +5,12 @@
 
 img {
   margin: auto;
-  width: 100%;
+  width: 100%
 }
 
 .col-md-3 {
   background-color: grey;
+  float: left;
   color: white;
   text-align: center;
 }
