@@ -121,7 +121,7 @@ function displayDishesTo(){
   $("#resultsSeven").text("");
   $("#resultsSeven").append("<h3><strong>Recommended Maincourses:</strong></h3><hr></hr>");
   $("#resultsEight").text("");
-  $("#resultsEight").append("<h3><strong>Recommended Deserts:</strong></h3><hr></hr>");
+  $("#resultsEight").append("<h3><strong>Recommended Desserts:</strong></h3><hr></hr>");
   for(var i = 0; i < globalUser.starters.length; i ++){
     $("#resultsFive").append("<div class = 'col-md-3'><h3>" + globalUser.starters[i].name + "</h3><img src="+ "'" + globalUser.starters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
   }
@@ -131,8 +131,8 @@ function displayDishesTo(){
   for(var i = 0; i < globalUser.maincourses.length; i ++){
     $("#resultsSeven").append("<div class = 'col-md-3'><h3>" + globalUser.maincourses[i].name + "</h3><img src="+ "'" + globalUser.maincourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
   }
-  for(var i = 0; i < globalUser.deserts.length; i ++){
-    $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.deserts[i].name + "</h3><img src="+ "'" + globalUser.deserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+  for(var i = 0; i < globalUser.desserts.length; i ++){
+    $("#resultsEight").append("<div class = 'col-md-3'><h3>" + globalUser.desserts[i].name + "</h3><img src="+ "'" + globalUser.desserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
   }
 }
 //Generates all Dish Objects
