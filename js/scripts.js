@@ -38,7 +38,13 @@ function FlavorProfile(thisSweet, thisSalty, thisBitter, thisSour, thisUmani){
 function generateUser(nameIn, password, countryFrom, countryTo, allergies){
   var newUser = new User(nameIn, password, countryFrom,countryTo,[],[],[],[],[0,0,0,0,0]);
   var arrLength = allUsers.length;
-
+  if(nameIn == ""){
+    alert("Enter a username");
+    return;
+  } else if(password == ""){
+    alert("Enter a password");
+    return;
+  }
   for(var i = 0; i < arrLength; i ++){
     if(allUsers[i].name == newUser.name){
       alert("Sorry this name is already Taken.");
@@ -58,15 +64,21 @@ function generateUser(nameIn, password, countryFrom, countryTo, allergies){
 //Sets globalUser to profile if user entered correct username or password.
 function login(userName, password){
   var currentUser = null;
+  var usernameState = false;
+  var passwordState = false;
   for(var i = 0; i < allUsers.length; i ++){
     currentUser = allUsers[i];
     if(currentUser.name == userName && currentUser.password == password){
       globalUser = currentUser;
       return true;
     } else if(currentUser.name == userName && currentUser.password != password){
-      alert("You entered the wrong password");
-      return false;
+      usernameState = true;
+      passwordState = false;
     }
+  }
+  if(usernameState == true && passwordState != true){
+    alert("You entered the wrong password");
+    return false;
   }
 }
 function displayDishesFrom(){
@@ -179,16 +191,45 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
     }
   }
 }
+function findDishObjectFromNameOfDish (currentDishNameIn){
+  console.log(currentDishNameIn);
+  for(var i = 0; i < allStarters.length; i ++){
+    if(allStarters[i].name == currentDishNameIn){
+      return allStarters[i];
+    }
+  }
+  for(var i = 0; i < allDrinks.length; i ++){
+    if(allDrinks[i].name == currentDishNameIn){
+      return allDrinks[i];
+    }
+  }
+  for(var i = 0; i < allMainCourses.length; i ++){
+    if(allMainCourses[i].name == currentDishNameIn){
+      return allMainCourses[i];
+    }
+  }
+  for(var i = 0; i < allDesserts.length; i ++){
+    if(allDesserts[i].name == currentDishNameIn){
+      return allDesserts[i];
+    }
+  }
+  return false;
+}
 
 function calculateCost(arrayOfDishObjects){
-  $("#cost").text("");
+  $("#resultsNine").text("");
   var arrayLength = arrayOfDishObjects.length;
   var totalCost = 0;
+  var currentDish;
   for(var i = 0; i <arrayLength; i ++){
-    totalCost += arrayOfDishObjects[i].cost;
-    $("#cost").append("Name: " + arrayOfDishObjects[i].name +  "<br>" + " Origin: " + arrayOfDishObjects[i].countryFrom +  "<br>" + " Cost/Unit: " + arrayOfDishObjects[i].cost +  "<br>");
+    currentDish = findDishObjectFromNameOfDish(arrayOfDishObjects[i]);
+    console.log(currentDish.name);
+    if(currentDish != false){
+      totalCost += currentDish.cost;
+      $("#resultsNine").append("<div class = 'col-md-3'>Name: " + currentDish.name +  "<br>" + " Origin: " + currentDish.countryFrom +  "<br>" + " Cost/Unit: " + currentDish.cost +  "<br></div>");
+    }
   }
-  $("#cost").append("Total Cost: " + totalCost + "<br>");
+  $("#resultsNine").append("<div class = 'col-md-12'>Total Cost for one of Each: " + totalCost + "<br></div>");
 }
 
 User.prototype.getStarterFlavorProfile = function(){
@@ -417,7 +458,7 @@ function toggle3(){
   $("#cost").toggleClass("hidden");
 }
 function toggle4(){
-
+  //hehexd
 }
 
 
@@ -437,8 +478,8 @@ $(document).ready(function(){
   $("form#login").submit(function(event) {
     event.preventDefault();
     var nameIn = $("#nameLogin").val();
-    var loginIn = $("#passwordLogin").val();
-    if(login(nameIn, loginIn)){
+    var password = $("#passwordLogin").val();
+    if(login(nameIn, password)){
       displayDishesFrom();
       toggle();
     }
@@ -456,17 +497,23 @@ $(document).ready(function(){
   });
   $("form#resultSecond").submit(function(event) {
     event.preventDefault();
-    console.log("SECOND");
     var selectedDishesTwo = [];
     $("input:checkbox[name=selectedTwo]:checked").each(function(){
       selectedDishesTwo.push($(this).val());
     });
-    console.log(selectedDishesTwo);
     calculateCost(selectedDishesTwo);
     toggle3();
 
   });
-  $("button#home").click(function(){
+  $("button#homeOne").click(function(){
+    toggle();
 
+  });
+  $("button#goBack").click(function(){
+    toggle2();
+
+  });
+  $("button#goBackTwo").click(function(){
+    toggle3();
   });
 });
