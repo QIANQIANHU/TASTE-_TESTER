@@ -2,11 +2,17 @@
 
 ####  This website help customers to form their taste profile, which can be the reference for users choose right dishes from foreign restaurants.
 
-#### By Qianqian Hu, Ainur Dzhaianbaeva 2018/01/29
+#### By Qianqian Hu, Alexander Neumann, Ainur Dzhaianbaeva, Faiza Husain, Angelo Russoniello, Brittany Thirtyacre
+
+#### Date 01 February 2018
 
 ## Description
 
- This website help customers to create their taste profile, which can be the reference for users choose right dishes from foreign restaurants. This webpage will get the users' taste preference by their clicking 4 groups pictures, after they submit the form, the page will form a funny description, spider-chart of their taste profile, and options of dishes matching their taste. The users could click the dishes they want, the most close taste dishes will display in a cart list and calculate the total for users. It also help the customers to explore a new restaurant, the order will match the customer's taste specifically. The chef can also adjust the dishes based on the taste profiles.
+The application assists users from various cultural origins in the identification of beverages and entrees which are similar to their respective local preferences. Users create an account, login, and are asked to provide their preferred dishes from their home country; the inputted data is ran through an algorithm which points to similar taste profiles of foreign countries.
+
+The user selects from four (4) groups of pictures, once the form is submitted the page forms a list of optional of dishes mirroring their preferences. The users click the desired dishes and the the most closely aligned options are displayed via a cart list with the total approximate cost calculation. The application assists users in the exploration of new restaurants creating a palatable experience regardless of their travel destination.
+
+Additionally, restaurant professionals can accurately gauge taste profiles and customer preferences.
 
 ## Setup/Installation Requirements
 
@@ -27,3 +33,15 @@ Contact email: huqianqian@ymail.com
 ### License
 
 Copyright (c) 2018 **qh, ad, fh, bt, an, ar**
+## License **_{MIT License}_**_
+
+Copyright (c) 2018 **_{Qianqian Hu and Brittany Thirtyacre}_**Permission is hereby granted, free of charge, to any person obtaining_
+a copy of this software and associated documentation files (the "Software"), to deal in the Software without_
+restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,_
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the_
+following conditions:_The above or foregoing copyright notice and this permission notice shall be included in all copies_
+or substantial portions of the Software.__THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,_
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT._
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN_
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS_
+IN THE SOFTWARE._
