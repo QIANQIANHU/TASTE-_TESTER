@@ -28,6 +28,10 @@ h1 {
   font-family: fantasy;
   margin: 30px;}
 
+h3 {
+  font-family: monospace;
+}
+
 h4 {
   font-family: monospace;
   margin: 20px;

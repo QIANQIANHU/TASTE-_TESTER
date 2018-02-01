@@ -224,10 +224,11 @@ function calculateCost(arrayOfDishObjects){
     currentDish = findDishObjectFromNameOfDish(arrayOfDishObjects[i]);
     if(currentDish != false){
       totalCost += currentDish.cost;
-      $("#resultsNine").append("Name: " + currentDish.name +  "<br>" + " Origin: " + currentDish.countryFrom +  "<br>" + " Cost/Unit: " + currentDish.cost +  "<br>");
+      $("#resultsNine").append("Name: " + currentDish.name +  "<br>" + " Origin: " + currentDish.countryFrom +  "<br>" + " Cost/Unit: " + currentDish.cost +  "<br><br>");
     }
   }
-  $("#resultsTen").append("Thank you for using our application! We hope you enjoy your food recommendations!")
+  $("#resultsNine").append("<br><strong>Total Cost:</strong> " + totalCost);
+  $("#resultsTen").prepend("Thank you for using our application! We hope you enjoy your food recommendations!")
 }
 
 User.prototype.getStarterFlavorProfile = function(){
@@ -300,7 +301,7 @@ User.prototype.checkForDishName = function(currentDishNameIn){
 Array.prototype.checkMargin = function(){
   var state = true;
   for(var i = 0; i < this.length; i ++){
-    if(this[i]>5){
+    if(this[i]>2){
       //Outside difference tolerance.
       state = false;
     }
@@ -382,7 +383,7 @@ function generateAllDishes(){
   allDrinks.push(one);
   one = new Dish("Shardai","PAKISTAN","drink",[3,1,0,0,0],4.99,"images/pakistani-cuisine/drink-shardai.jpg");
   allDrinks.push(one);
-  one = new Dish("Choley","PAKISTAN","starter",[1,1,1,0,0],4.99,"images/pakistani-cuisine/starter-cholay.JPG");
+  one = new Dish("Choley","PAKISTAN","starter",[1,3,1,0,2],4.99,"images/pakistani-cuisine/starter-cholay.JPG");
   allStarters.push(one);
   one = new Dish("Pani puri","PAKISTAN","starter",[0,1,0,0,0],4.99,"images/pakistani-cuisine/starter-panipuri.jpg");
   allStarters.push(one);
@@ -390,7 +391,7 @@ function generateAllDishes(){
   allStarters.push(one);
   one = new Dish("Pakora","PAKISTAN","starter",[0,1,0,0,1],3.99,"images/pakistani-cuisine/starter-pakora.jpg");
   allStarters.push(one);
-  one = new Dish("Chicken Biryani","PAKISTAN","maincourse",[1,3,0,0,3],19.99,"images/pakistani-cuisine/drink-sugarcanejuice.jpg");
+  one = new Dish("Chicken Biryani","PAKISTAN","maincourse",[1,3,0,0,3],19.99,"images/pakistani-cuisine/maincourse-chicken-biryani.jpg");
   allMainCourses.push(one);
   one = new Dish("Chicken Karahi","PAKISTAN","maincourse",[0,1,0,0,0],11.99,"images/pakistani-cuisine/maincourse-chicken-karahi.jpg");
   allMainCourses.push(one);
