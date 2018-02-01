@@ -1,6 +1,6 @@
 # Taste Tester WebPage
 
-####  This website help customers to form their taste profile, which can be the reference for users choose right dishes from foreign restaurants.
+####  The application assists users from various cultural origins in the identification of beverages and entrees which are similar to their respective local preferences.
 
 #### By Qianqian Hu, Alexander Neumann, Ainur Dzhaianbaeva, Faiza Husain, Angelo Russoniello, Brittany Thirtyacre
 
@@ -8,15 +8,15 @@
 
 ## Description
 
-The application assists users from various cultural origins in the identification of beverages and entrees which are similar to their respective local preferences. Users create an account, login, and are asked to provide their preferred dishes from their home country; the inputted data is ran through an algorithm which points to similar taste profiles of foreign countries.
+The application assists users from various cultural origins in the identification of beverages and entrees which are similar to their respective local preferences.
 
-The user selects from four (4) groups of pictures, once the form is submitted the page forms a list of optional of dishes mirroring their preferences. The users click the desired dishes and the the most closely aligned options are displayed via a cart list with the total approximate cost calculation. The application assists users in the exploration of new restaurants creating a palatable experience regardless of their travel destination.
+Users create an account, login, and are asked to provide their preferred dishes from their home country; the inputted data is ran through an algorithm pointing to similar taste profiles of foreign countries.
 
-Additionally, restaurant professionals can accurately gauge taste profiles and customer preferences.
+The user selects from four (4) groups of photos the resultant submission forms a list of comparable foreign dishes mirroring the preferences of the user. The outputted options are displayed via a cart list with the total approximate cost calculation. The application assists users in the exploration of new restaurants and aids in creating an enjoyable dining experience regardless of their travel destination. Additionally, restaurant professionals can accurately gauge taste profiles and customer preferences.
 
 ## Setup/Installation Requirements
 
-* Copy repository from GitHub to your computer using Terminal command $ git clone and then open index.html in a browser.
+* Copy repository from GitHub (https://github.com/QIANQIANHU/TASTE-_TESTER.gitto) your computer using Terminal command $ git clone and then open index.html in a browser.
 
 
 ## Technologies Used
@@ -28,14 +28,20 @@ Additionally, restaurant professionals can accurately gauge taste profiles and c
 
 ## Support and contact details
 
-Contact email: huqianqian@ymail.com
+Contact email:
 
-### License
+  huqianqian@ymail.com
+  alexander.daniel.neumann@gmail.com
+  brittanythirtyacre@gmail.com
+  faiza.ahsan1222@gmail.com
+  adjayanbaeva@gmail.com
+  angelorussoniello88@gmail.com
+
+### License **_{MIT License}_**_
 
 Copyright (c) 2018 **qh, ad, fh, bt, an, ar**
-## License **_{MIT License}_**_
 
-Copyright (c) 2018 **_{Qianqian Hu and Brittany Thirtyacre}_**Permission is hereby granted, free of charge, to any person obtaining_
+Copyright (c) 2018 **_{Alexander Neumann, Qianqian Hu, Ainur Dzhaianbaeva, Faiza Husain, Angelo Russoniello, Brittany Thirtyacre}_**Permission is hereby granted, free of charge, to any person obtaining_
 a copy of this software and associated documentation files (the "Software"), to deal in the Software without_
 restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,_
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the_
