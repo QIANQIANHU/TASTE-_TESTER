@@ -300,7 +300,7 @@ User.prototype.checkForDishName = function(currentDishNameIn){
 Array.prototype.checkMargin = function(){
   var state = true;
   for(var i = 0; i < this.length; i ++){
-    if(this[i]>2){
+    if(this[i]>5){
       //Outside difference tolerance.
       state = false;
     }
@@ -341,7 +341,7 @@ Array.prototype.checkForEqual = function(arrayIn){
 }
 //Used to toggle elements so the stuff is n the same page.
 //Generates all Dish Objects
-function generateAllDishes(){
+function generateAllDishes2(){
   //PAKISTANI
   var one = new Dish("Chicken Biryani", "PAKISTAN", "Main Course", [0, 1, 0, 0, 1, 1],19.99, "images/pakistani-cuisine/maincourse-chicken-biryani.jpg");
   allMainCourses.push(one);
@@ -441,6 +441,168 @@ function generateAllDishes(){
   allStarters.push(three);
   var three = new Dish("Boorsok", "KYRGYZSTAN", "Starter", [2, 0, 0, 0, 0, 0], 2.50, "images/centralAsian-cuisine/starter-boorsok.jpg");
   allStarters.push(three);
+}
+function generateAllDishes(){
+  var one = new Dish("Hot Chocolate","US","drink",[4,1,2,0,0],3.99,"images/us-cuisine/drink-hotchocolate.jpg");
+  allDrinks.push(one);
+  one = new Dish("Strawberry Smoothie","US","drink",[3,1,0,0,0],4.99,"images/us-cuisine/drink-hotchocolate.jpg");
+  allDrinks.push(one);
+  one = new Dish("Hot Tea","US","drink",[2,1.5,0,0,0],1.99,"images/us-cuisine/drink-hottea.jpg");
+  allDrinks.push(one);
+  one = new Dish("Coffee","US","drink",[2,0,4,1,0],4.99,"images/us-cuisine/drink-coffee.jpg");
+  allDrinks.push(one);
+  one = new Dish("Chicken Salad","US","starter",[0,4,1,1,0],1.5,"images/us-cuisine/starter-chickensalad.jpg");
+  allStarters.push(one);
+  one = new Dish("Apple Bread","US","starter",[0,4,1,1,1],4.99,"images/us-cuisine/starter-appbread.jpg");
+  allStarters.push(one);
+  one = new Dish("Cheeseplate","US","starter",[2,3,1,1,1],6.99,"images/us-cuisine/starter-cheeseplate.jpg");
+  allStarters.push(one);
+  one = new Dish("Fruit and Nuts","US","starter",[4,2,2,1,1],4.99,"images/us-cuisine/starter-fruitandnut.jpg");
+  allStarters.push(one);
+  one = new Dish("Steak","US","maincourse",[0,2,0,0,2],150,"images/us-cuisine/mc-steak.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Seabass","US","maincourse",[2,2,1,1,1],12.99,"images/us-cuisine/mc-seabass.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Grilled Chicken Sandwich ","US","maincourse",[1,2,1,0,4],7.99,"images/us-cuisine/mc-grilledchxsand.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Vegan Dish ","US","maincourse",[1,1,1,1,1],20.99,"images/us-cuisine/drink-hottea.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Chocolate Cookie","US","dessert",[5,2,0,0,1],8.99,"images/us-cuisine/dessert-chococookie.jpg");
+  allDesserts.push(one);
+  one = new Dish("Cheesecake","US","dessert",[5,1,1,0,1],9.99,"images/us-cuisine/dessert-cheesecake.jpg");
+  allDesserts.push(one);
+  one = new Dish("Strawberry Shortcake","US","dessert",[5,1,1,0,1],10.99,"images/us-cuisine/dessert-strawberryshortcake.jpg");
+  allDesserts.push(one);
+  one = new Dish("Apple Pie","US","dessert",[5,1,1,0,1],8.99,"images/us-cuisine/dessert-applepie.jpg");
+  allDesserts.push(one);
+  one = new Dish("Lassi","PAKISTAN","drink",[3,1,0,0,0],2.99,"images/pakistani-cuisine/drink-lassi.jpg");
+  allDrinks.push(one);
+  one = new Dish("Kashmiri chai","PAKISTAN","drink",[2,1.5,0,0,0],4.99,"images/pakistani-cuisine/drink-kashmirichai.jpg");
+  allDrinks.push(one);
+  one = new Dish("Sugar cane","PAKISTAN","drink",[5,0,0,0,0],1.99,"images/pakistani-cuisine/drink-sugarcanejuice.jpg");
+  allDrinks.push(one);
+  one = new Dish("Shardai","PAKISTAN","drink",[3,1,0,0,0],4.99,"images/pakistani-cuisine/drink-shardai.jpg");
+  allDrinks.push(one);
+  one = new Dish("Choley","PAKISTAN","starter",[1,1,1,0,0],4.99,"images/pakistani-cuisine/starter-cholay.JPG");
+  allStarters.push(one);
+  one = new Dish("Pani puri","PAKISTAN","starter",[0,1,0,0,0],4.99,"images/pakistani-cuisine/starter-panipuri.jpg");
+  allStarters.push(one);
+  one = new Dish("Samosa","PAKISTAN","starter",[0,1,0,0,0],4.99,"images/pakistani-cuisine/starter-samosas.jpg");
+  allStarters.push(one);
+  one = new Dish("Pakora","PAKISTAN","starter",[0,1,0,0,1],3.99,"images/pakistani-cuisine/starter-pakora.jpg");
+  allStarters.push(one);
+  one = new Dish("Chicken Biryani","PAKISTAN","maincourse",[1,3,0,0,3],19.99,"images/pakistani-cuisine/drink-sugarcanejuice.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Chicken Karahi","PAKISTAN","maincourse",[0,1,0,0,0],11.99,"images/pakistani-cuisine/maincourse-chicken-karahi.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Chicken Qorma","PAKISTAN","maincourse",[0,1,0,0,0],14.99,"images/pakistani-cuisine/maincourse-chickenqorma.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Okra subzi","PAKISTAN","maincourse",[0,1,0,0,0],9.99,"images/pakistani-cuisine/maincourse-okrasubzi.jpg");
+  allMainCourses.push(one);
+  one = new Dish("Ras Malai","PAKISTAN","dessert",[2,0,0,0,0],4.99,"images/pakistani-cuisine/dessert-rasmalai.jpg");
+  allDesserts.push(one);
+  one = new Dish("Kulfi Falooda","PAKISTAN","dessert",[2,0,0,0,0],5.99,"images/pakistani-cuisine/dessert-kulfifalooda.jpg");
+  allDesserts.push(one);
+  one = new Dish("Gulab Jamun","PAKISTAN","dessert",[5,0,0,0,0],4.99,"images/pakistani-cuisine/dessert-gulabjamun.jpg");
+  allDesserts.push(one);
+  one = new Dish("Kheer","PAKISTAN","dessert",[4,0,0,0,0],3.99,"images/pakistani-cuisine/dessert-kheer.jpg");
+  allDesserts.push(one);
+  one = new Dish("kompot","KYRGYZSTAN","drink",[5,0,0,0,0],1.99,"images/centralAsian-cuisine/drink-kompot.jpg");
+  allDrinks.push(one);
+  one = new Dish("chalap","KYRGYZSTAN","drink",[3,1,0,0,0],2.5,"images/centralAsian-cuisine/drink-chalap.jpg");
+  allDrinks.push(one);
+  one = new Dish("boza","KYRGYZSTAN","drink",[0,0,0,0,0],2.99,"images/centralAsian-cuisine/drink-boza.jpg");
+  allDrinks.push(one);
+  one = new Dish("kvas","KYRGYZSTAN","drink",[3,1,0,0,0],2.99,"images/centralAsian-cuisine/drink-kvass.jpg");
+  allDrinks.push(one);
+  one = new Dish("borak","KYRGYZSTAN","starter",[2,3,1,1,1],2.99,"images/centralAsian-cuisine/starter-borak.jpg");
+  allStarters.push(one);
+  one = new Dish("dolma","KYRGYZSTAN","starter",[0,0,0,2,0],3.99,"images/centralAsian-cuisine/starter-dolma.jpg");
+  allStarters.push(one);
+  one = new Dish("holodets","KYRGYZSTAN","starter",[0,2,0,3,0],3.5,"images/centralAsian-cuisine/starter-holodets.jpg");
+  allStarters.push(one);
+  one = new Dish("boorsok","KYRGYZSTAN","starter",[0,1,0,0,1],2.5,"images/centralAsian-cuisine/starter-boorsok.jpg");
+  allStarters.push(one);
+  one = new Dish("lagman","KYRGYZSTAN","maincourse",[0,2,0,0,2],9.99,"images/centralAsian-cuisine/mc-lagman.jpg");
+  allMainCourses.push(one);
+  one = new Dish("palov","KYRGYZSTAN","maincourse",[1,0,0,0,3],7.99,"images/centralAsian-cuisine/mc-palov.jpg");
+  allMainCourses.push(one);
+  one = new Dish("beshbarmak","KYRGYZSTAN","maincourse",[1,3,0,1,5],7.99,"images/centralAsian-cuisine/mc-beshbarmak.jpg");
+  allMainCourses.push(one);
+  one = new Dish("kuurdak","KYRGYZSTAN","maincourse",[0,2,0,0,2],8.99,"images/centralAsian-cuisine/mc-kuurdak.jpg");
+  allMainCourses.push(one);
+  one = new Dish("chak-chak","KYRGYZSTAN","dessert",[5,0,0,0,0],5.99,"images/centralAsian-cuisine/dessert-chakchak.jpg");
+  allDesserts.push(one);
+  one = new Dish("pahlava","KYRGYZSTAN","dessert",[5,0,0,0,0],5.99,"images/centralAsian-cuisine/dessert-pahlava.jpg");
+  allDesserts.push(one);
+  one = new Dish("halva","KYRGYZSTAN","dessert",[2,0,0,0,0],4.99,"images/centralAsian-cuisine/dessert-halva.jpeg");
+  allDesserts.push(one);
+  one = new Dish("ponchiki","KYRGYZSTAN","dessert",[5,0,0,0,0],4.99,"images/centralAsian-cuisine/dessert-pahlava.jpg");
+  allDesserts.push(one);
+  one = new Dish("wulongcha","CHINA","drink",[0,0,3,0,0],2.99,"images/chinese-cuisine/drink-wulongcha.jpg");
+  allDrinks.push(one);
+  one = new Dish("wuliangye","CHINA","drink",[0,0,2,0,1],6.99,"images/chinese-cuisine/drink-wuliangye.jpg");
+  allDrinks.push(one);
+  one = new Dish("naicha","CHINA","drink",[5,0,0,0,0],3.99,"images/chinese-cuisine/drink-naicha.jpg");
+  allDrinks.push(one);
+  one = new Dish("qishui","CHINA","drink",[5,0,1,3,0],2.99,"images/chinese-cuisine/drink-qishui.jpg");
+  allDrinks.push(one);
+  one = new Dish("xiaolongbao","CHINA","starter",[2,3,1,1,1],6.99,"images/starter-xiaolongbao.jpg");
+  allStarters.push(one);
+  one = new Dish("banmuer","CHINA","starter",[1,2,0,2,4],5.99,"images/starter-banmuer.jpg");
+  allStarters.push(one);
+  one = new Dish("luhuo","CHINA","starter",[2,4,0,3,5],8.99,"images/starter-lucai.jpg");
+  allStarters.push(one);
+  one = new Dish("xiangguqingcai","CHINA","starter",[1,3,0,0,4],7.99,"images/starter-xiangguqingcai.jpg");
+  allStarters.push(one);
+  one = new Dish("shuizhuyu","CHINA","maincourse",[0,2,0,0,2],10.99,"images/chinese-cuisine/mc-shuizhuyu.jpg");
+  allMainCourses.push(one);
+  one = new Dish("yangxiezihuoguo","CHINA","maincourse",[2,5,0,2,5],21.99,"images/mc-yangxiezihuoguo.jpg");
+  allMainCourses.push(one);
+  one = new Dish("yangzhouchaofan","CHINA","maincourse",[1,3,0,0,3],9.99,"images/mc-yangzhouchaofan.jpg");
+  allMainCourses.push(one);
+  one = new Dish("niuroumian","CHINA","maincourse",[1,3,0,1,5],12.99,"images/chinese-cuisine/mc-niuroumian.jpg");
+  allMainCourses.push(one);
+  one = new Dish("wandouhuang","CHINA","dessert",[5,0,0,0,0],5.99,"images/chinese-cuisine/dessert-wandouhuang.jpg");
+  allDesserts.push(one);
+  one = new Dish("niangao","CHINA","dessert",[5,0,0,0,0],4.99,"images/chinese-cuisine/dessert-niangao.jpg");
+  allDesserts.push(one);
+  one = new Dish("liuliansu","CHINA","dessert",[5,2,0,0,1],8.99,"images/centralAsian-cuisine/starter-holodets.jpg");
+  allDesserts.push(one);
+  one = new Dish("yangzhiganlu","CHINA","dessert",[4,0,0,3,0],7.99,"images/chinese-cuisine/dessert-yangzhiganlu.png");
+  allDesserts.push(one);
+  one = new Dish("espresso","ITALY","drink",[0,0,2,0,0],2.1,"images/italian-cuisine/drink- espresso.jpg");
+  allDrinks.push(one);
+  one = new Dish("aranciata","ITALY","drink",[3,0,0,2,0],3.99,"images/italian-cuisine/drink-aranciata.png");
+  allDrinks.push(one);
+  one = new Dish("vino-rosso","ITALY","drink",[0,0,0,0,0],2.54,"images/italian-cuisine/drink-aranciata.png");
+  allDrinks.push(one);
+  one = new Dish("toutle","ITALY","drink",[0,0,0,1,0],4.56,"images/italian-cuisine/drink-tourtle.jpg");
+  allDrinks.push(one);
+  one = new Dish("cozze-arrangate","ITALY","starter",[0,3,0,1,3],11.87,"images/italian-cuisine/starter- cozze arrangante.jpg");
+  allStarters.push(one);
+  one = new Dish("melanzana","ITALY","starter",[1,2,0,0,1],12.45,"images/italian-cuisine/starter- melanza di sant'Oronzo.jpg");
+  allStarters.push(one);
+  one = new Dish("pure-di-fave","ITALY","starter",[0,2,0,1,0],11.45,"images/italian-cuisine/starter- pure di fave.jpg");
+  allStarters.push(one);
+  one = new Dish("frisselle","ITALY","starter",[0,2,0,0,1],5.34,"images/italian-cuisine/starter- pure di fave.jpg");
+  allStarters.push(one);
+  one = new Dish("ciceria-e-tria","ITALY","maincourse",[0,2,0,0,0],12.23,"images/italian-cuisine/main- ciceria e tria.jpg");
+  allMainCourses.push(one);
+  one = new Dish("oricchiette-al-sugo","ITALY","maincourse",[0,2,0,0,0],11.98,"images/italian-cuisine/main- oricchiete al sugo.jpg");
+  allMainCourses.push(one);
+  one = new Dish("tiella-e-cozze","ITALY","maincourse",[0,2,0,0,3],14.78,"images/italian-cuisine/main- tiella di riso e cozze.jpg");
+  allMainCourses.push(one);
+  one = new Dish("pasta-e-cavoli","ITALY","maincourse",[0,2,0,0,0],11.7,"images/italian-cuisine/main-pasta e cavoli.jpg");
+  allMainCourses.push(one);
+  one = new Dish("sfogliatte","ITALY","dessert",[2,0,0,0,0],4.9,"images/italian-cuisine/dessert- sfogliatelle di natalle.jpg");
+  allDesserts.push(one);
+  one = new Dish("torta-surffice","ITALY","dessert",[2,0,0,0,0],5.23,"images/italian-cuisine/dessert- torta surffice alla aranccia.jpg");
+  allDesserts.push(one);
+  one = new Dish("rosa-di-mandorle","ITALY","dessert",[2,0,0,0,0],6.34,"images/italian-cuisine/dessert-rosa di mandorle.jpg");
+  allDesserts.push(one);
+  one = new Dish("torta-di-nocciole","ITALY","dessert",[2,0,1,0,0],5.56,"images/italian-cuisine/dessert-Torta di nocciole.jpg");
+  allDesserts.push(one);
 }
 //Toggle functions for switching pages.
 function toggle(){
