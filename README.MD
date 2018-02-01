@@ -30,11 +30,11 @@ The user selects from four (4) groups of photos the resultant submission forms a
 
 Contact email:
 
-  huqianqian@ymail.com
-  alexander.daniel.neumann@gmail.com
-  brittanythirtyacre@gmail.com
-  faiza.ahsan1222@gmail.com
-  adjayanbaeva@gmail.com
+  huqianqian@ymail.com;
+  alexander.daniel.neumann@gmail.com;
+  brittanythirtyacre@gmail.com;
+  faiza.ahsan1222@gmail.com;
+  adjayanbaeva@gmail.com;
   angelorussoniello88@gmail.com
 
 ### License **_{MIT License}_**_
