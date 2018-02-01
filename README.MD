@@ -16,7 +16,8 @@ The user selects from four (4) groups of photos the resultant submission forms a
 
 ## Setup/Installation Requirements
 
-* Copy repository from GitHub (https://github.com/QIANQIANHU/TASTE-_TESTER) your computer using Terminal command $ git clone and then open index.html in a browser.
+* Copy repository from GitHub (https://github.com/QIANQIANHU/TASTE-_TESTER) your computer using Terminal command $ git clone and then open index.html in a browser.or
+* Open [link](https://QIANQIANHU.github.io/TASTE-_TESTER) in your browser.
 
 
 ## Technologies Used
