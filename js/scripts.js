@@ -81,11 +81,12 @@ function login(userName, password){
     return false;
   }
 }
+//displays dishes from same country as globalUser
 function displayDishesFrom(){
-  $("#resultsOne").text("");
-  $("#resultsOne").append("<div class = 'col-md-12'><h3>Select Starters:</h3><hr></hr></div>");
   $("#resultsTwo").text("");
-  $("#resultsTwo").append("<div class = 'col-md-12'><h3>Select Drinks:</h3><hr></hr></div>");
+  $("#resultsTwo").append("<div class = 'col-md-12'><h3>Select Starters:</h3><hr></hr></div>");
+  $("#resultsOne").text("");
+  $("#resultsOne").append("<div class = 'col-md-12'><h3>Select Drinks:</h3><hr></hr></div>");
   $("#resultsThree").text("");
   $("#resultsThree").append("<div class = 'col-md-12'><h3>Select Maincourses:</h3><hr></hr></div>");
   $("#resultsFour").text("");
@@ -93,13 +94,13 @@ function displayDishesFrom(){
 
   for(var i = 0; i < allStarters.length; i ++){
     if(allStarters[i].countryFrom == globalUser.from){
-      $("#resultsOne").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
+      $("#resultsTwo").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
     }
     // + "<input type='checkbox' name='selected' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>"
   }
   for(var i = 0; i < allDrinks.length; i ++){
     if(allDrinks[i].countryFrom == globalUser.from){
-      $("#resultsTwo").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+      $("#resultsOne").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selected' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allMainCourses.length; i ++){
@@ -113,12 +114,12 @@ function displayDishesFrom(){
     }
   }
 }
-// Used to display all dish objects.
+//displays dishes from globalUsers current selection.
 function displayDishesTo(){
-  $("#resultsFive").text("");
-  $("#resultsFive").append("<div class = 'col-md-12'><h3>Recommended Starters:</h3><hr></hr></div>");
   $("#resultsSix").text("");
-  $("#resultsSix").append("<div class = 'col-md-12'><h3>Recommended Drinks:</h3><hr></hr></div>");
+  $("#resultsSix").append("<div class = 'col-md-12'><h3>Recommended Starters:</h3><hr></hr></div>");
+  $("#resultsFive").text("");
+  $("#resultsFive").append("<div class = 'col-md-12'><h3>Recommended Drinks:</h3><hr></hr></div>");
   $("#resultsSeven").text("");
   $("#resultsSeven").append("<div class = 'col-md-12'><h3>Recommended Maincourses:</h3><hr></hr></div>");
   $("#resultsEight").text("");
@@ -132,7 +133,7 @@ function displayDishesTo(){
     var margin = currentDishesFlavorProfile.subArrays(usersStarterFlavorProfile);
 
     if(allStarters[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
-      $("#resultsFive").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selectedTwo' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
+      $("#resultsSix").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selectedTwo' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allDrinks.length; i ++){
@@ -141,7 +142,7 @@ function displayDishesTo(){
     var margin = currentDishesFlavorProfile.subArrays(usersDrinkFlavorProfile);
 
     if(allDrinks[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
-      $("#resultsSix").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selectedTwo' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
+      $("#resultsFive").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selectedTwo' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allMainCourses.length; i ++){
@@ -192,7 +193,6 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
   }
 }
 function findDishObjectFromNameOfDish (currentDishNameIn){
-  console.log(currentDishNameIn);
   for(var i = 0; i < allStarters.length; i ++){
     if(allStarters[i].name == currentDishNameIn){
       return allStarters[i];
@@ -215,7 +215,6 @@ function findDishObjectFromNameOfDish (currentDishNameIn){
   }
   return false;
 }
-
 function calculateCost(arrayOfDishObjects){
   $("#resultsNine").text("");
   var arrayLength = arrayOfDishObjects.length;
@@ -223,13 +222,12 @@ function calculateCost(arrayOfDishObjects){
   var currentDish;
   for(var i = 0; i <arrayLength; i ++){
     currentDish = findDishObjectFromNameOfDish(arrayOfDishObjects[i]);
-    console.log(currentDish.name);
     if(currentDish != false){
       totalCost += currentDish.cost;
-      $("#resultsNine").append("<div class = 'col-md-3'>Name: " + currentDish.name +  "<br>" + " Origin: " + currentDish.countryFrom +  "<br>" + " Cost/Unit: " + currentDish.cost +  "<br></div>");
+      $("#resultsNine").append("Name: " + currentDish.name +  "<br>" + " Origin: " + currentDish.countryFrom +  "<br>" + " Cost/Unit: " + currentDish.cost +  "<br>");
     }
   }
-  $("#resultsNine").append("<div class = 'col-md-12'>Total Cost for one of Each: " + totalCost + "<br></div>");
+  $("#resultsTen").append("Thank you for using our application! We hope you enjoy your food recommendations!")
 }
 
 User.prototype.getStarterFlavorProfile = function(){
@@ -444,6 +442,7 @@ function generateAllDishes(){
   var three = new Dish("Boorsok", "KYRGYZSTAN", "Starter", [2, 0, 0, 0, 0, 0], 2.50, "images/centralAsian-cuisine/starter-boorsok.jpg");
   allStarters.push(three);
 }
+//Toggle functions for switching pages.
 function toggle(){
   $("#resultsContainerOne").toggleClass("hidden");
 
@@ -457,11 +456,6 @@ function toggle3(){
   $("#resultsContainerTwo").toggleClass("hidden");
   $("#cost").toggleClass("hidden");
 }
-function toggle4(){
-  //hehexd
-}
-
-
 $(document).ready(function(){
   generateAllDishes(); //Initializing all Dish objects in our makeshift database.
   $("form#createUser").submit(function(event) {
@@ -494,6 +488,12 @@ $(document).ready(function(){
     toggle2();
     displayDishesTo();
 
+  });
+  $("form#changeMe").change(function(){
+    event.preventDefault();
+    var countryAdjustment = $("#anotherOne").val();
+    globalUser.to = countryAdjustment;
+    displayDishesTo();
   });
   $("form#resultSecond").submit(function(event) {
     event.preventDefault();

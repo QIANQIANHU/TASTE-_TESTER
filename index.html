@@ -81,26 +81,42 @@
         <button type="submit" id="resultOne" class="btn btn-secondary">Save Selections</button>
       </div>
     </form>
-    <form id=resultSecond>
-    <div class = "container hidden" id="resultsContainerTwo">
-      <!-- <button type="submit" id="displayOne">Submit</button> -->
-      <div class = "row" id="resultsFive">
+      <div class = "container hidden" id="resultsContainerTwo">
+        <div class="row" id ="countryToDropDown">
+          <h6>Select another country you want a recommendation for:</h6>
+          <form id ="changeMe">
+            <select class="form-control" id="anotherOne">
+              <option value="US">United States</option>
+              <option value="CHINA">China</option>
+              <option value="PAKISTAN">Pakistan</option>
+              <option value="KYRGYZSTAN">Kyrgyzstan</option>
+              <option value="ITALY">Italy</option>
+            </select>
+          </form>
+          <br>
+        </div>
+        <form id=resultSecond>
+          <!-- <button type="submit" id="displayOne">Submit</button> -->
+          <div class = "row" id="resultsFive">
+          </div>
+          <div class = "row" id="resultsSix">
+          </div>
+          <div class = "row" id="resultsSeven">
+          </div>
+          <div class = "row" id="resultsEight">
+          </div>
+          <button type="button" id="goBack" class="btn btn-secondary">Go Back</button>
+          <button type="submit" id="order" class="btn btn-secondary">Place Order</button>
+        </form>
       </div>
-      <div class = "row" id="resultsSix">
-      </div>
-      <div class = "row" id="resultsSeven">
-      </div>
-      <div class = "row" id="resultsEight">
-      </div>
-      <button type="button" id="goBack" class="btn btn-secondary">Go Back</button>
-      <button type="submit" id="order" class="btn btn-secondary">Place Order</button>
-    </div>
     <div class="container hidden" id="cost">
-      <div class="row" id ="resultsNine">
-
+      <div class="row">
+        <div class = "col-md-4" id = "resultsNine">
+        </div>
+        <div class="col-md-8" id = "resultsTen">
+        </div>
       </div>
       <button type="button" id="goBackTwo" class="btn btn-secondary">Go Back</button>
     </div>
-    </form>
   </body>
 </html>
