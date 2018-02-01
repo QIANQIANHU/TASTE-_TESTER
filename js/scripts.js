@@ -16,12 +16,12 @@ function User(nameIn, password, countryFrom, countryTo, starterDishes, drinks, m
   this.maincourses = maincourses;
   this.desserts = desserts;
   this.flavProfile = null;
-  this.foodGProfile = null;
 }
 //Dish Object, used to dynamically generate Dishes that the current globalUser would prefer.
-function Dish(nameIn, countryFrom, flavProfile, course, cost, img){
+function Dish(nameIn, countryFrom, course, flavProfile, cost, img){
   this.name = nameIn;
   this.countryFrom = countryFrom;
+  this.course = course;
   this.flavProfile = flavProfile;
   this.cost = cost;
   this.img = img;
@@ -104,50 +104,50 @@ function displayDishesFrom(){
 // Used to display all dish objects.
 function displayDishesTo(){
   $("#resultsFive").text("");
-  $("#resultsFive").append("<div class = 'col-md-12'><h3><strong>Recommended Starters:</strong></h3><hr></hr></div>");
+  $("#resultsFive").append("<div class = 'col-md-12'><h3>Recommended Starters:</h3><hr></hr></div>");
   $("#resultsSix").text("");
-  $("#resultsSix").append("<div class = 'col-md-12'><h3><strong>Recommended Drinks:</strong></h3><hr></hr></div>");
+  $("#resultsSix").append("<div class = 'col-md-12'><h3>Recommended Drinks:</h3><hr></hr></div>");
   $("#resultsSeven").text("");
-  $("#resultsSeven").append("<div class = 'col-md-12'><h3><strong>Recommended Maincourses:</strong></h3><hr></hr></div>");
+  $("#resultsSeven").append("<div class = 'col-md-12'><h3>Recommended Maincourses:</h3><hr></hr></div>");
   $("#resultsEight").text("");
-  $("#resultsEight").append("<div class = 'col-md-12'><h3><strong>Recommended Desserts:</strong></h3><hr></hr></div>");
+  $("#resultsEight").append("<div class = 'col-md-12'><h3>Recommended Desserts:</h3><hr></hr></div>");
 
   for(var i = 0; i < allStarters.length; i ++){
     var usersStarterFlavorProfile = globalUser.getStarterFlavorProfile();
+
     var currentDishesFlavorProfile = allStarters[i].flavProfile;
-    console.log(currentDishesFlavorProfile);
-    console.log(usersStarterFlavorProfile);
+
     var margin = currentDishesFlavorProfile.subArrays(usersStarterFlavorProfile);
-    console.log("Starters: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
-    if(allStarters[i].countryFrom == globalUser.to && margin.checkMargin()){
-      $("#resultsFive").append("<div class = 'col-md-4'><h3>" + allStarters[i].name + "</h3><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+
+    if(allStarters[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
+      $("#resultsFive").append("<div class = 'col-md-3'><img src="+ "'" + allStarters[i].img + "'" + " alt='Picture of food' >"+ "<br>"+ "<input type='checkbox' name='selectedTwo' value=" + "'" + allStarters[i].name + "'" + "+>" + allStarters[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allDrinks.length; i ++){
     var usersDrinkFlavorProfile = globalUser.getDrinkFlavorProfile();
     var currentDishesFlavorProfile = allDrinks[i].flavProfile;
     var margin = currentDishesFlavorProfile.subArrays(usersDrinkFlavorProfile);
-    console.log("Drinks: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
-    if(allDrinks[i].countryFrom == globalUser.to && margin.checkMargin()){
-      $("#resultsSix").append("<div class = 'col-md-4'><h3>" + allDrinks[i].name + "</h3><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+
+    if(allDrinks[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
+      $("#resultsSix").append("<div class = 'col-md-3'><img src="+ "'" + allDrinks[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selectedTwo' value=" + "'" + allDrinks[i].name + "'" + "+>" + allDrinks[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allMainCourses.length; i ++){
     var usersMainCourseFlavorProfile = globalUser.getMainCourseFlavorProfile();
     var currentDishesFlavorProfile = allMainCourses[i].flavProfile;
     var margin = currentDishesFlavorProfile.subArrays(usersMainCourseFlavorProfile);
-    console.log("MainCourses: " + "\n" + "Margin: " + margin + "checkMargin: "+  margin.checkMargin());
-    if(allMainCourses[i].countryFrom == globalUser.to && margin.checkMargin()){
-      $("#resultsSeven").append("<div class = 'col-md-4'><h3>" + allMainCourses[i].name + "</h3><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+
+    if(allMainCourses[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
+      $("#resultsSeven").append("<div class = 'col-md-3'><img src="+ "'" + allMainCourses[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selectedTwo' value=" + "'" + allMainCourses[i].name + "'" + "+>" + allMainCourses[i].name  + "</div>");
     }
   }
   for(var i = 0; i < allDesserts.length; i ++){
     var usersDessertFlavorProfile = globalUser.getDessertFlavorProfile();
     var currentDishesFlavorProfile = allDesserts[i].flavProfile;
     var margin = currentDishesFlavorProfile.subArrays(usersDessertFlavorProfile);
-    console.log("Desserts: " + "\n" + "Margin: " + margin + "checkMargin: " + margin.checkMargin());
-    if(allDesserts[i].countryFrom == globalUser.to && margin.checkMargin()){
-      $("#resultsEight").append("<div class = 'col-md-4'><h3>" + allDesserts[i].name + "</h3><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food' height='100' width='100'></div>");
+
+    if(allDesserts[i].countryFrom == globalUser.to && margin.checkMargin() && !margin.checkForEqual(usersStarterFlavorProfile)){
+      $("#resultsEight").append("<div class = 'col-md-3'><img src="+ "'" + allDesserts[i].img + "'" + " alt='Picture of food'>" + "<br>"+"<input type='checkbox' name='selectedTwo' value=" + "'" + allDesserts[i].name + "'" + "+>" + allDesserts[i].name  + "</div>");
     }
   }
 }
@@ -178,6 +178,17 @@ function sortSelectedDishesForUser(arrayOfDishObjects){
       }
     }
   }
+}
+
+function calculateCost(arrayOfDishObjects){
+  $("#cost").text("");
+  var arrayLength = arrayOfDishObjects.length;
+  var totalCost = 0;
+  for(var i = 0; i <arrayLength; i ++){
+    totalCost += arrayOfDishObjects[i].cost;
+    $("#cost").append("Name: " + arrayOfDishObjects[i].name +  "<br>" + " Origin: " + arrayOfDishObjects[i].countryFrom +  "<br>" + " Cost/Unit: " + arrayOfDishObjects[i].cost +  "<br>");
+  }
+  $("#cost").append("Total Cost: " + totalCost + "<br>");
 }
 
 User.prototype.getStarterFlavorProfile = function(){
@@ -250,7 +261,7 @@ User.prototype.checkForDishName = function(currentDishNameIn){
 Array.prototype.checkMargin = function(){
   var state = true;
   for(var i = 0; i < this.length; i ++){
-    if(this[i]>5){
+    if(this[i]>2){
       //Outside difference tolerance.
       state = false;
     }
@@ -278,6 +289,16 @@ Array.prototype.subArrays = function(arrayIn) {
     outputArray[i] = Math.abs(arrayIn[i] - this[i]);
   }
   return outputArray;
+}
+Array.prototype.checkForEqual = function(arrayIn){
+  var arrLength = arrayIn.length;
+  var state = true;
+  for(var i = 0 ; i < arrLength; i ++){
+    if(!arrayIn[i] == this[i]){
+      state = false;
+    }
+  }
+  return state;
 }
 //Used to toggle elements so the stuff is n the same page.
 //Generates all Dish Objects
@@ -363,13 +384,13 @@ function generateAllDishes(){
   allDrinks.push(three);
   var three = new Dish("Boza", "KYRGYZSTAN", "Drink", [1, 1, 0, 2, 0, 0], 2.99, "images/centralAsian-cuisine/drink-boza.jpg");
   allDrinks.push(three);
-  var three = new Dish("Kvas", "KYRGYZSTAN", "Drink", [2, 0, 1, 2, 0, 0],2.99, "images/centralAsian-cuisine/drink-boza.jpg");
+  var three = new Dish("Kvas", "KYRGYZSTAN", "Drink", [2, 0, 1, 2, 0, 0],2.99, "images/centralAsian-cuisine/drink-kvass.jpg");
   allDrinks.push(three);
   var three = new Dish("Chak-chak", "KYRGYZSTAN", "Dessert", [3, 0, 0, 0, 0, 0], 5.99, "images/centralAsian-cuisine/dessert-chakchak.jpg");
   allDesserts.push(three);
   var three = new Dish("Pahlava", "KYRGYZSTAN", "Dessert", [4, 0, 0, 0, 0, 1], 5.99, "images/centralAsian-cuisine/dessert-pahlava.jpg");
   allDesserts.push(three);
-  var three = new Dish("Halva", "KYRGYZSTAN", "Dessert", [4, 0, 0, 0, 0, 1],4.99, "images/centralAsian-cuisine/dessert-pahlava.jpg");
+  var three = new Dish("Halva", "KYRGYZSTAN", "Dessert", [4, 0, 0, 0, 0, 1],4.99, "images/centralAsian-cuisine/dessert-halva.jpg");
   allDesserts.push(three);
   var three = new Dish("Ponchiki", "KYRGYZSTAN", "Dessert", [3, 0, 0, 0, 0, 0],4.99, "images/centralAsian-cuisine/dessert-ponchiki.jpg");
   allDesserts.push(three);
@@ -392,7 +413,11 @@ function toggle2(){
   $("#resultsContainerTwo").toggleClass("hidden");
 }
 function toggle3(){
-  $(".hidden").toggle();
+  $("#resultsContainerTwo").toggleClass("hidden");
+  $("#cost").toggleClass("hidden");
+}
+function toggle4(){
+
 }
 
 
@@ -400,22 +425,16 @@ $(document).ready(function(){
   generateAllDishes(); //Initializing all Dish objects in our makeshift database.
   $("form#createUser").submit(function(event) {
     event.preventDefault();
-    console.log("createUser");
     var nameIn = $("#name").val();
     var passwordIn = $("#password").val();
     var countryFrom = $("#countryFrom").val();
     var countryTo = $("#countryTo").val();
-    var allergies = [];
-    $("input:checkbox[name=allergy]:checked").each(function(){
-    allergies.push($(this).val());
-    });
-    if(generateUser(nameIn, passwordIn, countryFrom, countryTo, allergies)){
+    if(generateUser(nameIn, passwordIn, countryFrom, countryTo)){
       displayDishesFrom();
       toggle();
     }
   });
   $("form#login").submit(function(event) {
-    console.log("login");
     event.preventDefault();
     var nameIn = $("#nameLogin").val();
     var loginIn = $("#passwordLogin").val();
@@ -434,5 +453,20 @@ $(document).ready(function(){
     toggle2();
     displayDishesTo();
 
-  })
+  });
+  $("form#resultSecond").submit(function(event) {
+    event.preventDefault();
+    console.log("SECOND");
+    var selectedDishesTwo = [];
+    $("input:checkbox[name=selectedTwo]:checked").each(function(){
+      selectedDishesTwo.push($(this).val());
+    });
+    console.log(selectedDishesTwo);
+    calculateCost(selectedDishesTwo);
+    toggle3();
+
+  });
+  $("button#home").click(function(){
+
+  });
 });
