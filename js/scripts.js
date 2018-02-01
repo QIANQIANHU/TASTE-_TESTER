@@ -217,6 +217,7 @@ function findDishObjectFromNameOfDish (currentDishNameIn){
 }
 function calculateCost(arrayOfDishObjects){
   $("#resultsNine").text("");
+  $("#resultsTen").text("");
   var arrayLength = arrayOfDishObjects.length;
   var totalCost = 0;
   var currentDish;
@@ -301,7 +302,7 @@ User.prototype.checkForDishName = function(currentDishNameIn){
 Array.prototype.checkMargin = function(){
   var state = true;
   for(var i = 0; i < this.length; i ++){
-    if(this[i]>2){
+    if(this[i]>3){
       //Outside difference tolerance.
       state = false;
     }
